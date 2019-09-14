@@ -1,0 +1,40 @@
+.sideNav{
+  display : flex;
+  flex-direction : column;
+  max-height : 100vh;
+  height : 100vh;
+  max-width : 30vw;
+  width : 30vw;
+  position : fixed;
+  z-index : ;
+  top : 0;
+  left : 0;
+  justify-content : center;
+}
+
+.navDiv {
+  max-width : 30vw;
+  width : 30vw;
+  max-height : 20vh;
+  height : 20vh;
+  background-color : #0091D8;
+  border : 1px solid #ADD3E5;
+  border-radius : 2px;
+  display : flex;
+  flex-direction : column;
+  justify-content: center;
+  align-items : center;
+}
+
+.sideNavHite {
+  text-decoration : none;
+  font-size : 3vh;
+  text align : center;
+  justify-content : center;
+  color : black;
+  align-content : center;
+}
+
+.sideNavHite:hover  {
+  color : purple;
+}
