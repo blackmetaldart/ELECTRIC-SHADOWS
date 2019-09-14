@@ -3,7 +3,7 @@
 # TECHNOLOGIES USED
 
 
-This project required the use of an API that provided a Reddit-like back-end. Users are able to sign in, post, comment, and have some control over the data they create. The languages used are HTML, CSS, and Javascipt. AJAX methods were used to make calls to the API.
+This project required the use of an API that provided a Reddit-like back-end. Users are able to sign in, post, comment, and have some control over the data they create. The languages used to create the project are HTML, CSS, and Javascipt, but AJAX methods were used to make calls to the API.
 
 
 # APPROACH
