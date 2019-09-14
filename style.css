@@ -83,3 +83,37 @@ header a {
 header a:hover {
   color : white;
 }
+
+1 {
+  font : 50px white Verdana;
+  letter-spacing : 2vw;
+  text-align : center;
+}
+
+.infoDisplay {
+  max-width : 63vw;
+  width : 63vw;
+  max-height : 75vh;
+  height : 75vh;
+  background-color: blue;
+  margin : 0 auto;
+  display : flex;
+  flex-direction : column;
+  justify-content : center;
+  align-items : center;
+  text-align : center;
+}
+
+.infoDiv {
+  display : none;
+  max-width : 63vw;
+  width : 63vw;
+  max-height : 75vh;
+  height : 75vh;
+  margin : 0 auto;
+  flex-direction : column;
+  justify-content : center;
+  align-items : center;
+  text-align : center;
+  overflow-y : scroll;
+}
