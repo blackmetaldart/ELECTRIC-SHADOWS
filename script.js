@@ -1,0 +1,20 @@
+//THESE FUNCTIONS ARE RERESPONSIBLE FOR ACTIVATING A LOADED PAGE
+document.getElementById('landingLogo').addEventListener('click', landingChanges);
+document.getElementById('footSignUp').addEventListener('click', signUpChanges);
+document.getElementById('createPostText').addEventListener('click', createPostChanges);
+document.getElementById('listAllPosts').addEventListener('click', listPostChanges);
+document.getElementById('userComments').addEventListener('click', userCommentChanges);
+document.getElementById('userPosts').addEventListener('click', userPostChanges);
+document.getElementById('logo').addEventListener('mousemove', updateDisplay);
+document.getElementById('logo').addEventListener('mouseleave', updateDisplay2);
+document.getElementById('logo').addEventListener('click', showUserFunctions);
+document.getElementById('submitMain').addEventListener('click', signUp);
+document.getElementById('viewProfile').addEventListener('click', getProfile);
+document.getElementById('submitPost').addEventListener('click', submitPost);
+document.getElementById('viewUserProfile').addEventListener('click', getProfile);
+document.getElementById('aboutUs').addEventListener('click', aboutUsChanges);
+document.getElementById('submitProfile').addEventListener('click', createProfile);
+document.getElementById('createUserProfile').addEventListener('click', createProfileChanges);
+document.getElementById('upProfile').addEventListener('click', updateProfileChanges);
+document.getElementById('submitChanges').addEventListener('click', updateProfile);
+document.getElementById('logOut').addEventListener('click', logOutChanges);
