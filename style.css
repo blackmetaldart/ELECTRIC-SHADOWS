@@ -38,3 +38,23 @@
 .sideNavHite:hover  {
   color : purple;
 }
+
+logo {
+  font-size: 7vh;
+}
+
+.mainContent {
+  max-width : 70vw;
+  width : 70vw;
+  max-height : 100vh;
+  height : 100vh;
+  margin-left : 29.5vw;
+  display : flex;
+  flex-direction : column;
+  position : fixed;
+  top : 0;
+}
+
+.sideNav .navDiv a:hover {
+  color : white;
+}
