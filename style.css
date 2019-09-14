@@ -58,3 +58,28 @@ logo {
 .sideNav .navDiv a:hover {
   color : white;
 }
+
+header {
+  max-width : 70vw;
+  width : 70vw;
+  max-height : 20vh;
+  height : 20vh;
+  background-color : blue;
+  //margin : 1vw 1vw 2vw 1vw;
+  display : flex;
+  flex-direction : column;
+  justify-content : space-around;
+  opacity : .8;
+  border : 1px solid #ADD3E5;
+  position : sticky;
+  top : 0;
+}
+
+header a {
+  text-decoration : none;
+  color : black;
+}
+
+header a:hover {
+  color : white;
+}
