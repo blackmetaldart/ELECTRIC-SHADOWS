@@ -169,3 +169,29 @@ h2 {
   flex-direction : column;
   justify-content : center;
 }
+
+#aboutElectricShadows {
+  flex-direction : column;
+  justify-content : center;
+  align-items : stretch;
+}
+
+#aboutElectricShadows h2 {
+  margin : 4vh auto;
+}
+
+#aboutElectricShadows p {
+  margin : 2vh auto;
+}
+
+#createProfile form {
+  flex-direction : column;
+  justify-content : center;
+  align-items : stretch;
+}
+
+#viewProfile article{
+  flex-direction : column;
+  justify-content : center;
+  align-items : stretch;
+}
