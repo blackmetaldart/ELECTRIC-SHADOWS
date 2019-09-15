@@ -515,3 +515,42 @@ function signUp (e) {
          allPosts.appendChild(article);
      }
      }
+
+     function showPostHistory (response) {
+       const allPosts = document.querySelector('#userPostList');
+       const postList = document.createElement('article');
+       const idbase = 'commentArea';
+
+       for (var i = response.length-1; i >= 0; i--) {
+         let article = document.createElement('article');
+         let heading = document.createElement('h2');
+         let text = document.createElement('p');
+         let area = document.createElement('textarea');
+         let button = document.createElement('button');
+         let button2 = document.createElement('button');
+
+         //THIS CREATES THE POST/COMMENT AREA
+         heading.innerText = response[i].title;
+         text.innerText = response[i].description;
+         article.appendChild(heading);
+         article.appendChild(text);
+         area.id = (idbase + response[i].id);
+         article.appendChild(area);
+         button.setAttribute('class', 'addComment');
+         button.innerHTML = ('Add Comment');
+         button.id = response[i].id;
+         button.addEventListener('click', createComment);
+         article.appendChild(button);
+         button2.setAttribute('class', 'deletePost');
+         button2.innerHTML = ('Delete Post');
+         button2.id = response[i].id;
+         button2.addEventListener('click', deletePost)
+         article.appendChild(button2);
+
+         postList.appendChild(article);
+       }
+       postList.style.overflowY = "scroll";
+       allPosts.replaceWith(postList);
+       postList.id = 'userPostList';
+
+     }
