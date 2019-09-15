@@ -252,3 +252,26 @@ function signUp (e) {
   console.log(response);
   actionSuccessful();})
   }
+
+  function submitPost(e) {
+  e.preventDefault();
+  const title = document.querySelector('#myTitle');
+  const description = document.querySelector('#myDescription');
+
+    fetch('http://thesi.generalassemb.ly:8080/post', {
+      method : 'POST',
+      headers : {
+          "Authorization" : "Bearer " + localStorage.getItem('user'),
+          "Content-Type" : "application/json"
+        },
+      body : JSON.stringify({
+          title : `${title.value}`,
+          description : `${description.value}`
+      })
+    })
+    .then((response) => {return response.json();
+    })
+    .then((response) => {console.log(response);
+
+    actionSuccessful();})
+  }
