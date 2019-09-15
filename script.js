@@ -231,3 +231,24 @@ function logOutChanges () {
   localStorage.setItem('user', null);
   landingChanges();
 }
+
+//THESE ARE THE FUNCTIONS THAT ARE RESPONSIBLE FOR MANIPULATING THE DOM
+function signUp (e) {
+  e.preventDefault();
+  const email = document.querySelector('#email');
+  const password = document.querySelector('#password');
+  const username = document.querySelector('#username');
+
+  fetch('http://thesi.generalassemb.ly:8080/signup', {
+    method : 'POST',
+    headers : {'Content-Type' : 'application/json'},
+    body : JSON.stringify({
+      email : `${email.value}`,
+      password : `${password.value}`,
+      username : `${username.value}`})
+    })
+  .then((response) => {return response.json();})
+  .then((response) => {localStorage.setItem('user',response.token);
+  console.log(response);
+  actionSuccessful();})
+  }
