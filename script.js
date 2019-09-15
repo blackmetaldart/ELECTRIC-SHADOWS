@@ -481,3 +481,37 @@ function signUp (e) {
          showPostHistory(response);
        })
      }
+
+     function showAllPosts (response) {
+       const allPosts = document.querySelector('#viewAllPosts');
+       const idbase = 'commentArea';
+
+       for (var i = response.length-1; i >= 0; i--) {
+         let article = document.createElement('article');
+         let heading = document.createElement('h2');
+         let text = document.createElement('p');
+         let area = document.createElement('textarea');
+         let button = document.createElement('button');
+         let button2 = document.createElement('button');
+
+         //THIS CREATES THE POST/COMMENT AREA
+         heading.innerText = response[i].title;
+         text.innerText = response[i].description;
+         article.appendChild(heading);
+         article.appendChild(text);
+         article.id = 'Article' + response[i].id;
+         area.id = (idbase + response[i].id);
+         article.appendChild(area);
+         button.setAttribute('class', 'addComment');
+         button.innerHTML = ('Add Comment');
+         button.id = response[i].id;
+         button.addEventListener('click', createComment);
+         article.appendChild(button);
+         button2.setAttribute('class', 'viewComments');
+         button2.innerHTML = ('View Comments');
+         button2.id = response[i].id;
+         button2.addEventListener('click', viewComments)
+         article.appendChild(button2);
+         allPosts.appendChild(article);
+     }
+     }
