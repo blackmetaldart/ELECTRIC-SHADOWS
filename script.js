@@ -380,3 +380,26 @@ function signUp (e) {
      .then((response) => {console.log(response);
      showProfile(response);})
    }
+
+   function showProfile (response) {
+     const viewProfile = document.getElementById('viewProfilePage');
+
+     let article = document.createElement('article');
+     let user = document.createElement('h2');
+     let nextEmail = document.createElement('p');
+     let mobile = document.createElement('p');
+     let address = document.createElement('p');
+
+     user.innerText = response.user.username;
+     nextEmail.innerText = response.additionalEmail;
+     mobile.innerText = response.mobile;
+     address.innerText = response.address;
+
+     article.appendChild(user);
+     article.appendChild(nextEmail);
+     article.appendChild(mobile);
+     article.appendChild(address);
+     viewProfile.appendChild(article);
+
+     getProfileChanges();
+   }
