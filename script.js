@@ -369,3 +369,14 @@ function signUp (e) {
 
            actionSuccessful();})
    }
+
+   function getProfile (e) {
+     fetch('http://thesi.generalassemb.ly:8080/profile', {
+       method : 'GET',
+       headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+       'Content-Type' : 'application/json'}
+     })
+     .then((response) => {return response.json()})
+     .then((response) => {console.log(response);
+     showProfile(response);})
+   }
