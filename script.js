@@ -18,3 +18,20 @@ document.getElementById('createUserProfile').addEventListener('click', createPro
 document.getElementById('upProfile').addEventListener('click', updateProfileChanges);
 document.getElementById('submitChanges').addEventListener('click', updateProfile);
 document.getElementById('logOut').addEventListener('click', logOutChanges);
+
+//THESE FUNCTIONS ARE RESPONSIBLE FOR SWITCHING THE SCREENS
+function landingChanges (e) {
+  document.getElementById('landingDisplay').style.display = 'block';
+  document.getElementById('signUpForm').style.display = 'none';
+  document.getElementById('footSignUp').style.display = 'block';
+  document.getElementById('createPost').style.display = 'none';
+  document.getElementById('userFunctions').style.display = 'none';
+  document.getElementById('actionSuccessful').style.display = 'none';
+  document.getElementById('actionError').style.display = 'none';
+  document.getElementById('viewUserPosts').style.display = 'none';
+  document.getElementById('viewAllPosts').style.display = 'none';
+  document.getElementById('viewUserComments').style.display = 'none';
+  document.getElementById('aboutElectricShadows').style.display = 'none';
+  document.getElementById('createProfile').style.display = "none";
+  document.getElementById('viewProfilePage').style.display = 'none';
+}
