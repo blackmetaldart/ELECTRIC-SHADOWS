@@ -275,3 +275,18 @@ function signUp (e) {
 
     actionSuccessful();})
   }
+
+  function createComment (e) {
+    e.preventDefault();
+    var commentArea = document.querySelector('#commentArea' + this.id);
+    fetch('http://thesi.generalassemb.ly:8080/comment/' + this.id, {
+      method : 'POST',
+      headers : {"Authorization" : "Bearer "+ localStorage.getItem('user'),
+        "Content-Type" : "application/json"},
+      body : JSON.stringify({
+        text : `${commentArea.value}`})})
+      .then((response) => {return response.json();})
+      .then((response) => {console.log(response);
+
+      actionSuccessful();})
+  }
