@@ -554,3 +554,26 @@ function signUp (e) {
        postList.id = 'userPostList';
 
      }
+
+
+     function actionSuccessful () {
+       document.getElementById('signUpForm').style.display = 'none';
+       document.getElementById('updateProfile').style.display = 'none';
+       document.getElementById('landingDisplay').style.display = 'none';
+       document.getElementById('footSignUp').style.display = 'none';
+       document.getElementById('createPost').style.display = 'none';
+       document.getElementById('userFunctions').style.display = 'none';
+       document.getElementById('actionSuccessful').style.display = 'block';
+       document.getElementById('actionError').style.display = 'none';
+     }
+
+     function actionError () {
+       document.getElementById('signUpForm').style.display = 'none';
+       document.getElementById('updateProfile').style.display = 'none';
+       document.getElementById('landingDisplay').style.display = 'none';
+       document.getElementById('footSignUp').style.display = 'none';
+       document.getElementById('createPost').style.display = 'none';
+       document.getElementById('userFunctions').style.display = 'none';
+       document.getElementById('actionSuccessful').style.display = 'none';
+       document.getElementById('actionError').style.display = 'block';
+     }
