@@ -35,3 +35,11 @@ function landingChanges (e) {
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
 }
+
+function updateDisplay (e) {
+  document.getElementById('logo').innerHTML = '<p>USER OPTIONS</p>';
+}
+
+function updateDisplay2 (e) {
+  document.getElementById('logo').innerHTML = '<i class="fas fa-bolt"></i>';
+}
