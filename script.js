@@ -94,7 +94,6 @@ function showUserFunctions (e) {
 }
 
 unction logInChanges (e) {
-  //e.preventDefault();
   document.getElementById('signUpForm').style.display = 'block';
   document.getElementById('updateProfile').style.display = 'none';
   document.getElementById('landingDisplay').style.display = 'none';
@@ -110,7 +109,6 @@ unction logInChanges (e) {
 }
 
 function signUpChanges (e) {
-  //e.preventDefault();
   document.getElementById('signUpForm').style.display = 'block';
   document.getElementById('footSignUp').style.display = 'none';
   document.getElementById('createPost').style.display = 'none';
