@@ -117,3 +117,20 @@ header a:hover {
   text-align : center;
   overflow-y : scroll;
 }
+
+landingDisplay {
+  background-image : url('images/bgimg.jpg');
+  box-sizing : border-box;
+  background-size : cover;
+  background-position : center;
+  opacity : .9;
+  display : block;
+}
+
+#signUpForm {
+  flex-direction : column;
+}
+
+#signUpForm h2{
+  margin-top : 10vh;
+}
