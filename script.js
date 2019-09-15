@@ -308,3 +308,15 @@ function signUp (e) {
 
      actionSuccessful();})
    }
+
+   function listAllPosts () {
+     //e.preventDefault();
+     fetch('http://thesi.generalassemb.ly:8080/post/list', {
+       method : 'GET',
+       headers : {'Content-Type' : 'application/json'}
+   })
+     .then((response) => {return response.json();})
+     .then((response) => {showAllPosts(response);
+      console.log(response);
+       actionSuccessful();})
+   }
