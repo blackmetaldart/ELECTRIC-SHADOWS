@@ -290,3 +290,21 @@ function signUp (e) {
 
       actionSuccessful();})
   }
+
+  function createProfile(e) {
+    e.preventDefault();
+    const addEmail = document.getElementById('addEmail');
+    const addMobile = document.getElementById('addMobile');
+    const addAddress = document.getElementById('addAddress');
+
+    fetch('http://thesi.generalassemb.ly:8080/profile', {
+      method : 'POST',
+      headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+        'Content-Type' : 'application/json'},
+      body : JSON.stringify({additionalEmail : addEmail.value,
+       mobile : addMobile.value, address : addAddress.value})})
+     .then((response => {return response.json()}))
+     .then((response) => {console.log(response);
+
+     actionSuccessful();})
+   }
