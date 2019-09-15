@@ -417,3 +417,33 @@ function signUp (e) {
 
        displayUserComments(response);})
    }
+
+   function displayUserComments (response) {
+     const vyooUserComments = document.querySelector('#userCommentList');
+     const allComments = document.createElement('article');
+
+
+     for (var i = response.length-1; i >= 0; i--) {
+       let article = document.createElement('article');
+       let user = document.createElement('h2');
+       let text = document.createElement('p');
+       let button = document.createElement('button');
+
+
+       //THIS CREATES THE POST/COMMENT AREA
+       user.innerText = response[i].user.username;
+       text.innerText = response[i].text;
+       article.appendChild(user);
+       article.appendChild(text);
+       button.setAttribute('class', 'deleteComment');
+       button.innerHTML = ('Delete Comment');
+       button.id = response[i].id;
+       button.addEventListener('click', deleteComment);
+       article.appendChild(button);
+
+       allComments.appendChild(article);
+       }
+       allComments.style.overflowY = "scroll"
+       vyooUserComments.replaceWith(allComments);
+       allComments.id = 'userCommentList'
+   }
