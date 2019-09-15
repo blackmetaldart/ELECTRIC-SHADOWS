@@ -320,3 +320,28 @@ function signUp (e) {
       console.log(response);
        actionSuccessful();})
    }
+
+
+   function viewComments (response) {
+     let commentsFor = document.getElementById('Article' + this.id);
+     let postId = this.id;
+
+     fetch('http://thesi.generalassemb.ly:8080/post/'+ `${postId}`+'/comment',
+     {method : 'GET'})
+     .then((response2) => {return response2.json();})
+     .then((response2) => {
+   if (response.length != 0) {
+
+
+     for (var i = response2.length - 1; i >= 0; i--) {
+       let comment = document.createElement('p');
+       let commentUser = document.createElement('p');
+
+       comment.innerText = response2[i].text;
+       commentUser.innerText = response2[i].user.username;
+       commentsFor.appendChild(commentUser);
+       commentsFor.appendChild(comment);
+     }
+   }
+   })
+   }
