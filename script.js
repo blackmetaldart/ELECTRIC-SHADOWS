@@ -125,3 +125,19 @@ function signUpChanges (e) {
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
 }
+
+function createPostChanges (e) {
+  document.getElementById('createPost').style.display = 'block';
+  document.getElementById('signUpForm').style.display = 'none';
+  document.getElementById('footSignUp').style.display = 'none';
+  document.getElementById('landingDisplay').style.display = 'none';
+  document.getElementById('userFunctions').style.display = 'none';
+  document.getElementById('actionSuccessful').style.display = 'none';
+  document.getElementById('actionError').style.display = 'none';
+  document.getElementById('viewUserPosts').style.display = 'none';
+  document.getElementById('viewAllPosts').style.display = 'none';
+  document.getElementById('viewUserComments').style.display = 'none';
+  document.getElementById('aboutElectricShadows').style.display = 'none';
+  document.getElementById('createProfile').style.display = "none";
+  document.getElementById('viewProfilePage').style.display = 'none';
+}
