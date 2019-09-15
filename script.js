@@ -447,3 +447,21 @@ function signUp (e) {
        vyooUserComments.replaceWith(allComments);
        allComments.id = 'userCommentList'
    }
+
+   function updateProfile (e) {
+      const mobile = document.getElementById('newMobile').value;
+
+       e.preventDefault();
+     fetch('http://thesi.generalassemb.ly:8080/profile', {
+         method : 'POST',
+         headers : {
+           'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+           'Content-Type' : 'application/json'},
+         body : JSON.stringify({mobile : `${mobile}`
+         })
+       })
+       .then((response) => {return response.json();})
+       .then((response) => {console.log(response);
+         actionSuccessful();
+       })
+   }
