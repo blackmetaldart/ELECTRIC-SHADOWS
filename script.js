@@ -345,3 +345,15 @@ function signUp (e) {
    }
    })
    }
+
+   function deleteComment (e) {
+     let meth = 'DELETE';
+       e.preventDefault();
+     fetch('http://thesi.generalassemb.ly:8080/comment/' + this.id + '',
+       {method : `${meth}`,
+         headers : {'Content-Type' : 'application/json',
+         'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
+       .then((response) => {console.log(response);
+
+       actionSuccessful();})
+   }
