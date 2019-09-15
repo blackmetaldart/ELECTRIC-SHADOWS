@@ -465,3 +465,19 @@ function signUp (e) {
          actionSuccessful();
        })
    }
+
+   function getPostsByUser () {
+     fetch ('http://thesi.generalassemb.ly:8080/user/post', {
+       method : 'GET',
+       headers : {
+         'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+         'Content-Type' : 'application/json'}
+       })
+       .then((response) => {
+         return response.json();
+       })
+       .then((response) => {
+         console.log(response);
+         showPostHistory(response);
+       })
+     }
