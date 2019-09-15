@@ -226,3 +226,8 @@ function updateProfileChanges () {
   document.getElementById('viewProfilePage').style.display = 'none';
   document.getElementById('updateProfile').style.display = 'block';
 }
+
+function logOutChanges () {
+  localStorage.setItem('user', null);
+  landingChanges();
+}
