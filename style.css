@@ -39,7 +39,7 @@
   color : purple;
 }
 
-logo {
+#logo {
   font-size: 7vh;
 }
 
@@ -84,7 +84,7 @@ header a:hover {
   color : white;
 }
 
-1 {
+h1 {
   font : 50px white Verdana;
   letter-spacing : 2vw;
   text-align : center;
@@ -118,7 +118,7 @@ header a:hover {
   overflow-y : scroll;
 }
 
-landingDisplay {
+#landingDisplay {
   background-image : url('images/bgimg.jpg');
   box-sizing : border-box;
   background-size : cover;
@@ -134,6 +134,7 @@ landingDisplay {
 #signUpForm h2{
   margin-top : 10vh;
 }
+
 
 h2 {
   margin-bottom : 7vh;

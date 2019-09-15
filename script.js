@@ -1,3 +1,4 @@
+
 //THESE FUNCTIONS ARE RERESPONSIBLE FOR ACTIVATING A LOADED PAGE
 document.getElementById('landingLogo').addEventListener('click', landingChanges);
 document.getElementById('footSignUp').addEventListener('click', signUpChanges);
@@ -93,7 +94,7 @@ function showUserFunctions (e) {
     document.getElementById('viewProfilePage').style.display = 'none';
 }
 
-unction logInChanges (e) {
+function logInChanges (e) {
   document.getElementById('signUpForm').style.display = 'block';
   document.getElementById('updateProfile').style.display = 'none';
   document.getElementById('landingDisplay').style.display = 'none';
@@ -109,6 +110,7 @@ unction logInChanges (e) {
 }
 
 function signUpChanges (e) {
+  //e.preventDefault();
   document.getElementById('signUpForm').style.display = 'block';
   document.getElementById('footSignUp').style.display = 'none';
   document.getElementById('createPost').style.display = 'none';
@@ -139,7 +141,6 @@ function createPostChanges (e) {
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
 }
-
 
 function listPostChanges (e) {
   document.getElementById('createPost').style.display = 'none';
@@ -251,327 +252,326 @@ function signUp (e) {
   actionSuccessful();})
   }
 
-  function submitPost(e) {
-  e.preventDefault();
-  const title = document.querySelector('#myTitle');
-  const description = document.querySelector('#myDescription');
+function submitPost(e) {
+e.preventDefault();
+const title = document.querySelector('#myTitle');
+const description = document.querySelector('#myDescription');
 
-    fetch('http://thesi.generalassemb.ly:8080/post', {
-      method : 'POST',
-      headers : {
-          "Authorization" : "Bearer " + localStorage.getItem('user'),
-          "Content-Type" : "application/json"
-        },
-      body : JSON.stringify({
-          title : `${title.value}`,
-          description : `${description.value}`
-      })
+  fetch('http://thesi.generalassemb.ly:8080/post', {
+    method : 'POST',
+    headers : {
+        "Authorization" : "Bearer " + localStorage.getItem('user'),
+        "Content-Type" : "application/json"
+      },
+    body : JSON.stringify({
+        title : `${title.value}`,
+        description : `${description.value}`
     })
-    .then((response) => {return response.json();
-    })
+  })
+  .then((response) => {return response.json();
+  })
+  .then((response) => {console.log(response);
+
+  actionSuccessful();})
+}
+
+function createComment (e) {
+  e.preventDefault();
+  var commentArea = document.querySelector('#commentArea' + this.id);
+  fetch('http://thesi.generalassemb.ly:8080/comment/' + this.id, {
+    method : 'POST',
+    headers : {"Authorization" : "Bearer "+ localStorage.getItem('user'),
+      "Content-Type" : "application/json"},
+    body : JSON.stringify({
+      text : `${commentArea.value}`})})
+    .then((response) => {return response.json();})
     .then((response) => {console.log(response);
 
     actionSuccessful();})
+}
+
+function createProfile(e) {
+  e.preventDefault();
+  const addEmail = document.getElementById('addEmail');
+  const addMobile = document.getElementById('addMobile');
+  const addAddress = document.getElementById('addAddress');
+
+  fetch('http://thesi.generalassemb.ly:8080/profile', {
+    method : 'POST',
+    headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+      'Content-Type' : 'application/json'},
+    body : JSON.stringify({additionalEmail : addEmail.value,
+     mobile : addMobile.value, address : addAddress.value})})
+   .then((response => {return response.json()}))
+   .then((response) => {console.log(response);
+
+   actionSuccessful();})
+ }
+
+function listAllPosts () {
+  //e.preventDefault();
+  fetch('http://thesi.generalassemb.ly:8080/post/list', {
+    method : 'GET',
+    headers : {'Content-Type' : 'application/json'}
+})
+  .then((response) => {return response.json();})
+  .then((response) => {showAllPosts(response);
+   console.log(response);
+    actionSuccessful();})
+}
+
+function viewComments (response) {
+  let commentsFor = document.getElementById('Article' + this.id);
+  let postId = this.id;
+
+  fetch('http://thesi.generalassemb.ly:8080/post/'+ `${postId}`+'/comment',
+  {method : 'GET'})
+  .then((response2) => {return response2.json();})
+  .then((response2) => {
+if (response.length != 0) {
+
+
+  for (var i = response2.length - 1; i >= 0; i--) {
+    let comment = document.createElement('p');
+    let commentUser = document.createElement('p');
+
+    comment.innerText = response2[i].text;
+    commentUser.innerText = response2[i].user.username;
+    commentsFor.appendChild(commentUser);
+    commentsFor.appendChild(comment);
   }
+}
+})
+}
 
-  function createComment (e) {
+
+function deleteComment (e) {
+  let meth = 'DELETE';
     e.preventDefault();
-    var commentArea = document.querySelector('#commentArea' + this.id);
-    fetch('http://thesi.generalassemb.ly:8080/comment/' + this.id, {
-      method : 'POST',
-      headers : {"Authorization" : "Bearer "+ localStorage.getItem('user'),
-        "Content-Type" : "application/json"},
-      body : JSON.stringify({
-        text : `${commentArea.value}`})})
-      .then((response) => {return response.json();})
-      .then((response) => {console.log(response);
+  fetch('http://thesi.generalassemb.ly:8080/comment/' + this.id + '',
+    {method : `${meth}`,
+      headers : {'Content-Type' : 'application/json',
+      'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
+    .then((response) => {console.log(response);
 
-      actionSuccessful();})
-  }
+    actionSuccessful();})
+}
 
-  function createProfile(e) {
+function deletePost (e) {
+  let meth = 'DELETE';
+  e.preventDefault();
+  fetch('http://thesi.generalassemb.ly:8080/post/' + `${this.id}` + '', {
+    method : `${meth}`,
+    headers : {'Content-Type' : 'application/json',
+      'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
+    .then((response) => {console.log(response);
+
+        actionSuccessful();})
+}
+
+function getProfile (e) {
+  fetch('http://thesi.generalassemb.ly:8080/profile', {
+    method : 'GET',
+    headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+    'Content-Type' : 'application/json'}
+  })
+  .then((response) => {return response.json()})
+  .then((response) => {console.log(response);
+  showProfile(response);})
+}
+
+function showProfile (response) {
+  const viewProfile = document.getElementById('viewProfilePage');
+
+  let article = document.createElement('article');
+  let user = document.createElement('h2');
+  let nextEmail = document.createElement('p');
+  let mobile = document.createElement('p');
+  let address = document.createElement('p');
+
+  user.innerText = response.user.username;
+  nextEmail.innerText = response.additionalEmail;
+  mobile.innerText = response.mobile;
+  address.innerText = response.address;
+
+  article.appendChild(user);
+  article.appendChild(nextEmail);
+  article.appendChild(mobile);
+  article.appendChild(address);
+  viewProfile.appendChild(article);
+
+  getProfileChanges();
+}
+
+function getCommentsByUser (e) {
+  //e.preventDefault();
+    fetch('http://thesi.generalassemb.ly:8080/user/comment', {
+      method : 'GET',
+      headers : {
+        'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+        'Content-Type' : 'application/json'}
+    })
+    .then((response) => {return response.json()})
+    .then((response) => {console.log(response);
+
+    displayUserComments(response);})
+}
+
+function displayUserComments (response) {
+  const vyooUserComments = document.querySelector('#userCommentList');
+  const allComments = document.createElement('article');
+
+
+  for (var i = response.length-1; i >= 0; i--) {
+    let article = document.createElement('article');
+    let user = document.createElement('h2');
+    let text = document.createElement('p');
+    let button = document.createElement('button');
+
+
+    //THIS CREATES THE POST/COMMENT AREA
+    user.innerText = response[i].user.username;
+    text.innerText = response[i].text;
+    article.appendChild(user);
+    article.appendChild(text);
+    button.setAttribute('class', 'deleteComment');
+    button.innerHTML = ('Delete Comment');
+    button.id = response[i].id;
+    button.addEventListener('click', deleteComment);
+    article.appendChild(button);
+
+    allComments.appendChild(article);
+    }
+    allComments.style.overflowY = "scroll"
+    vyooUserComments.replaceWith(allComments);
+    allComments.id = 'userCommentList'
+}
+
+function updateProfile (e) {
+   const mobile = document.getElementById('newMobile').value;
+
     e.preventDefault();
-    const addEmail = document.getElementById('addEmail');
-    const addMobile = document.getElementById('addMobile');
-    const addAddress = document.getElementById('addAddress');
-
-    fetch('http://thesi.generalassemb.ly:8080/profile', {
+  fetch('http://thesi.generalassemb.ly:8080/profile', {
       method : 'POST',
-      headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+      headers : {
+        'Authorization' : 'Bearer ' + localStorage.getItem('user'),
         'Content-Type' : 'application/json'},
-      body : JSON.stringify({additionalEmail : addEmail.value,
-       mobile : addMobile.value, address : addAddress.value})})
-     .then((response => {return response.json()}))
-     .then((response) => {console.log(response);
+      body : JSON.stringify({mobile : `${mobile}`
+      })
+    })
+    .then((response) => {return response.json();})
+    .then((response) => {console.log(response);
+      actionSuccessful();
+    })
+}
 
-     actionSuccessful();})
-   }
-
-   function listAllPosts () {
-     //e.preventDefault();
-     fetch('http://thesi.generalassemb.ly:8080/post/list', {
-       method : 'GET',
-       headers : {'Content-Type' : 'application/json'}
-   })
-     .then((response) => {return response.json();})
-     .then((response) => {showAllPosts(response);
+function getPostsByUser () {
+  fetch ('http://thesi.generalassemb.ly:8080/user/post', {
+    method : 'GET',
+    headers : {
+      'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+      'Content-Type' : 'application/json'}
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
       console.log(response);
-       actionSuccessful();})
-   }
+      showPostHistory(response);
+    })
+  }
 
+function showAllPosts (response) {
+  const allPosts = document.querySelector('#viewAllPosts');
+  const idbase = 'commentArea';
 
-   function viewComments (response) {
-     let commentsFor = document.getElementById('Article' + this.id);
-     let postId = this.id;
+  for (var i = response.length-1; i >= 0; i--) {
+    let article = document.createElement('article');
+    let heading = document.createElement('h2');
+    let text = document.createElement('p');
+    let area = document.createElement('textarea');
+    let button = document.createElement('button');
+    let button2 = document.createElement('button');
 
-     fetch('http://thesi.generalassemb.ly:8080/post/'+ `${postId}`+'/comment',
-     {method : 'GET'})
-     .then((response2) => {return response2.json();})
-     .then((response2) => {
-   if (response.length != 0) {
+    //THIS CREATES THE POST/COMMENT AREA
+    heading.innerText = response[i].title;
+    text.innerText = response[i].description;
+    article.appendChild(heading);
+    article.appendChild(text);
+    article.id = 'Article' + response[i].id;
+    area.id = (idbase + response[i].id);
+    article.appendChild(area);
+    button.setAttribute('class', 'addComment');
+    button.innerHTML = ('Add Comment');
+    button.id = response[i].id;
+    button.addEventListener('click', createComment);
+    article.appendChild(button);
+    button2.setAttribute('class', 'viewComments');
+    button2.innerHTML = ('View Comments');
+    button2.id = response[i].id;
+    button2.addEventListener('click', viewComments)
+    article.appendChild(button2);
+    allPosts.appendChild(article);
+}
+}
 
+function showPostHistory (response) {
+  const allPosts = document.querySelector('#userPostList');
+  const postList = document.createElement('article');
+  const idbase = 'commentArea';
 
-     for (var i = response2.length - 1; i >= 0; i--) {
-       let comment = document.createElement('p');
-       let commentUser = document.createElement('p');
+  for (var i = response.length-1; i >= 0; i--) {
+    let article = document.createElement('article');
+    let heading = document.createElement('h2');
+    let text = document.createElement('p');
+    let area = document.createElement('textarea');
+    let button = document.createElement('button');
+    let button2 = document.createElement('button');
 
-       comment.innerText = response2[i].text;
-       commentUser.innerText = response2[i].user.username;
-       commentsFor.appendChild(commentUser);
-       commentsFor.appendChild(comment);
-     }
-   }
-   })
-   }
+    //THIS CREATES THE POST/COMMENT AREA
+    heading.innerText = response[i].title;
+    text.innerText = response[i].description;
+    article.appendChild(heading);
+    article.appendChild(text);
+    area.id = (idbase + response[i].id);
+    article.appendChild(area);
+    button.setAttribute('class', 'addComment');
+    button.innerHTML = ('Add Comment');
+    button.id = response[i].id;
+    button.addEventListener('click', createComment);
+    article.appendChild(button);
+    button2.setAttribute('class', 'deletePost');
+    button2.innerHTML = ('Delete Post');
+    button2.id = response[i].id;
+    button2.addEventListener('click', deletePost)
+    article.appendChild(button2);
 
-   function deleteComment (e) {
-     let meth = 'DELETE';
-       e.preventDefault();
-     fetch('http://thesi.generalassemb.ly:8080/comment/' + this.id + '',
-       {method : `${meth}`,
-         headers : {'Content-Type' : 'application/json',
-         'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
-       .then((response) => {console.log(response);
+    postList.appendChild(article);
+  }
+  postList.style.overflowY = "scroll";
+  allPosts.replaceWith(postList);
+  postList.id = 'userPostList';
 
-       actionSuccessful();})
-   }
+}
 
-   function deletePost (e) {
-     let meth = 'DELETE';
-     e.preventDefault();
-     fetch('http://thesi.generalassemb.ly:8080/post/' + `${this.id}` + '', {
-       method : `${meth}`,
-       headers : {'Content-Type' : 'application/json',
-         'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
-       .then((response) => {console.log(response);
+function actionSuccessful () {
+  document.getElementById('signUpForm').style.display = 'none';
+  document.getElementById('updateProfile').style.display = 'none';
+  document.getElementById('landingDisplay').style.display = 'none';
+  document.getElementById('footSignUp').style.display = 'none';
+  document.getElementById('createPost').style.display = 'none';
+  document.getElementById('userFunctions').style.display = 'none';
+  document.getElementById('actionSuccessful').style.display = 'block';
+  document.getElementById('actionError').style.display = 'none';
+}
 
-           actionSuccessful();})
-   }
-
-   function getProfile (e) {
-     fetch('http://thesi.generalassemb.ly:8080/profile', {
-       method : 'GET',
-       headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
-       'Content-Type' : 'application/json'}
-     })
-     .then((response) => {return response.json()})
-     .then((response) => {console.log(response);
-     showProfile(response);})
-   }
-
-   function showProfile (response) {
-     const viewProfile = document.getElementById('viewProfilePage');
-
-     let article = document.createElement('article');
-     let user = document.createElement('h2');
-     let nextEmail = document.createElement('p');
-     let mobile = document.createElement('p');
-     let address = document.createElement('p');
-
-     user.innerText = response.user.username;
-     nextEmail.innerText = response.additionalEmail;
-     mobile.innerText = response.mobile;
-     address.innerText = response.address;
-
-     article.appendChild(user);
-     article.appendChild(nextEmail);
-     article.appendChild(mobile);
-     article.appendChild(address);
-     viewProfile.appendChild(article);
-
-     getProfileChanges();
-   }
-
-   function getCommentsByUser (e) {
-     //e.preventDefault();
-       fetch('http://thesi.generalassemb.ly:8080/user/comment', {
-         method : 'GET',
-         headers : {
-           'Authorization' : 'Bearer ' + localStorage.getItem('user'),
-           'Content-Type' : 'application/json'}
-       })
-       .then((response) => {return response.json()})
-       .then((response) => {console.log(response);
-
-       displayUserComments(response);})
-   }
-
-   function displayUserComments (response) {
-     const vyooUserComments = document.querySelector('#userCommentList');
-     const allComments = document.createElement('article');
-
-
-     for (var i = response.length-1; i >= 0; i--) {
-       let article = document.createElement('article');
-       let user = document.createElement('h2');
-       let text = document.createElement('p');
-       let button = document.createElement('button');
-
-
-       //THIS CREATES THE POST/COMMENT AREA
-       user.innerText = response[i].user.username;
-       text.innerText = response[i].text;
-       article.appendChild(user);
-       article.appendChild(text);
-       button.setAttribute('class', 'deleteComment');
-       button.innerHTML = ('Delete Comment');
-       button.id = response[i].id;
-       button.addEventListener('click', deleteComment);
-       article.appendChild(button);
-
-       allComments.appendChild(article);
-       }
-       allComments.style.overflowY = "scroll"
-       vyooUserComments.replaceWith(allComments);
-       allComments.id = 'userCommentList'
-   }
-
-   function updateProfile (e) {
-      const mobile = document.getElementById('newMobile').value;
-
-       e.preventDefault();
-     fetch('http://thesi.generalassemb.ly:8080/profile', {
-         method : 'POST',
-         headers : {
-           'Authorization' : 'Bearer ' + localStorage.getItem('user'),
-           'Content-Type' : 'application/json'},
-         body : JSON.stringify({mobile : `${mobile}`
-         })
-       })
-       .then((response) => {return response.json();})
-       .then((response) => {console.log(response);
-         actionSuccessful();
-       })
-   }
-
-   function getPostsByUser () {
-     fetch ('http://thesi.generalassemb.ly:8080/user/post', {
-       method : 'GET',
-       headers : {
-         'Authorization' : 'Bearer ' + localStorage.getItem('user'),
-         'Content-Type' : 'application/json'}
-       })
-       .then((response) => {
-         return response.json();
-       })
-       .then((response) => {
-         console.log(response);
-         showPostHistory(response);
-       })
-     }
-
-     function showAllPosts (response) {
-       const allPosts = document.querySelector('#viewAllPosts');
-       const idbase = 'commentArea';
-
-       for (var i = response.length-1; i >= 0; i--) {
-         let article = document.createElement('article');
-         let heading = document.createElement('h2');
-         let text = document.createElement('p');
-         let area = document.createElement('textarea');
-         let button = document.createElement('button');
-         let button2 = document.createElement('button');
-
-         //THIS CREATES THE POST/COMMENT AREA
-         heading.innerText = response[i].title;
-         text.innerText = response[i].description;
-         article.appendChild(heading);
-         article.appendChild(text);
-         article.id = 'Article' + response[i].id;
-         area.id = (idbase + response[i].id);
-         article.appendChild(area);
-         button.setAttribute('class', 'addComment');
-         button.innerHTML = ('Add Comment');
-         button.id = response[i].id;
-         button.addEventListener('click', createComment);
-         article.appendChild(button);
-         button2.setAttribute('class', 'viewComments');
-         button2.innerHTML = ('View Comments');
-         button2.id = response[i].id;
-         button2.addEventListener('click', viewComments)
-         article.appendChild(button2);
-         allPosts.appendChild(article);
-     }
-     }
-
-     function showPostHistory (response) {
-       const allPosts = document.querySelector('#userPostList');
-       const postList = document.createElement('article');
-       const idbase = 'commentArea';
-
-       for (var i = response.length-1; i >= 0; i--) {
-         let article = document.createElement('article');
-         let heading = document.createElement('h2');
-         let text = document.createElement('p');
-         let area = document.createElement('textarea');
-         let button = document.createElement('button');
-         let button2 = document.createElement('button');
-
-         //THIS CREATES THE POST/COMMENT AREA
-         heading.innerText = response[i].title;
-         text.innerText = response[i].description;
-         article.appendChild(heading);
-         article.appendChild(text);
-         area.id = (idbase + response[i].id);
-         article.appendChild(area);
-         button.setAttribute('class', 'addComment');
-         button.innerHTML = ('Add Comment');
-         button.id = response[i].id;
-         button.addEventListener('click', createComment);
-         article.appendChild(button);
-         button2.setAttribute('class', 'deletePost');
-         button2.innerHTML = ('Delete Post');
-         button2.id = response[i].id;
-         button2.addEventListener('click', deletePost)
-         article.appendChild(button2);
-
-         postList.appendChild(article);
-       }
-       postList.style.overflowY = "scroll";
-       allPosts.replaceWith(postList);
-       postList.id = 'userPostList';
-
-     }
-
-
-     function actionSuccessful () {
-       document.getElementById('signUpForm').style.display = 'none';
-       document.getElementById('updateProfile').style.display = 'none';
-       document.getElementById('landingDisplay').style.display = 'none';
-       document.getElementById('footSignUp').style.display = 'none';
-       document.getElementById('createPost').style.display = 'none';
-       document.getElementById('userFunctions').style.display = 'none';
-       document.getElementById('actionSuccessful').style.display = 'block';
-       document.getElementById('actionError').style.display = 'none';
-     }
-
-     function actionError () {
-       document.getElementById('signUpForm').style.display = 'none';
-       document.getElementById('updateProfile').style.display = 'none';
-       document.getElementById('landingDisplay').style.display = 'none';
-       document.getElementById('footSignUp').style.display = 'none';
-       document.getElementById('createPost').style.display = 'none';
-       document.getElementById('userFunctions').style.display = 'none';
-       document.getElementById('actionSuccessful').style.display = 'none';
-       document.getElementById('actionError').style.display = 'block';
-     }
+function actionError () {
+  document.getElementById('signUpForm').style.display = 'none';
+  document.getElementById('updateProfile').style.display = 'none';
+  document.getElementById('landingDisplay').style.display = 'none';
+  document.getElementById('footSignUp').style.display = 'none';
+  document.getElementById('createPost').style.display = 'none';
+  document.getElementById('userFunctions').style.display = 'none';
+  document.getElementById('actionSuccessful').style.display = 'none';
+  document.getElementById('actionError').style.display = 'block';
+}
