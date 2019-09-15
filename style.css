@@ -134,3 +134,38 @@ landingDisplay {
 #signUpForm h2{
   margin-top : 10vh;
 }
+
+h2 {
+  margin-bottom : 7vh;
+}
+
+#createPost form  {
+  margin : 0 auto;
+}
+
+#actionSuccessful {
+  align-items : space-evenly;
+
+}
+
+#actionError {
+  align-items : space-evenly;
+}
+
+#createPost form {
+  max-width : 35vw;
+  width : 35vw;
+  max-height : 35vh;
+  height : 45vh;
+}
+
+#createPost textarea {
+  max-height : 25vh;
+  height : 25vh;
+}
+
+#createPost form p {
+  display : flex;
+  flex-direction : column;
+  justify-content : center;
+}
