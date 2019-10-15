@@ -350,25 +350,6 @@ function viewComments (response) {
   .then((response2) => {
 if (response.length != 0) {
 
-
-
-for (var i = 0; i < array.length; i++) {
-  array[i]
-}
-
-
-for (var i = 0; i < array.le
-ngth; i++) {
-  array[i]
-
-}
-
-while (true) {
-
-}
-
-
-
   for (var i = response2.length - 1; i >= 0; i--) {
     let comment = document.createElement('p');
     let commentUser = document.createElement('p');
