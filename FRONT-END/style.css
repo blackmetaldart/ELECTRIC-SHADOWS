@@ -85,7 +85,8 @@ header a:hover {
 }
 
 h1 {
-  font : 50px white Verdana;
+  font-size : 3vw;
+  font-family: 'Rye', cursive;
   letter-spacing : 2vw;
   text-align : center;
 }
