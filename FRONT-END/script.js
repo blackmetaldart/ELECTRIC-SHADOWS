@@ -167,7 +167,6 @@ function listPostChanges (e) {
   listAllPosts();
 }
 
-
 //THIS FUNCTION DISPLAYS THE USER'S COMMENTS // HIDES ELSE
 function userCommentChanges (e) {
   document.getElementById('createPost').style.display = 'none';
@@ -242,6 +241,7 @@ function updateProfileChanges () {
 //THIS IS THE FUNCTION THAT DESTROYS THE USER
 function logOutChanges () {
   localStorage.setItem('user', null);
+  localStorage.setItem('username', null);
   landingChanges();
 }
 
@@ -253,7 +253,7 @@ function signUp (e) {
   const password = document.querySelector('#password');
   const username = document.querySelector('#username');
 
-  fetch('localhost:8080/signup', {
+  fetch('http://localhost:8080/signup', {
     method : 'POST',
     headers : {'Content-Type' : 'application/json'},
     body : JSON.stringify({
@@ -273,7 +273,7 @@ e.preventDefault();
 const title = document.querySelector('#myTitle');
 const description = document.querySelector('#myDescription');
 
-  fetch('localhost:8080/' + `${username}` + '/makepost', {
+  fetch('http://localhost:8080/' + `${username}` + '/makepost', {
     method : 'POST',
     headers : {
         "Authorization" : "Bearer " + localStorage.getItem('user'),
@@ -295,7 +295,7 @@ const description = document.querySelector('#myDescription');
 function createComment (e) {
   e.preventDefault();
   var commentArea = document.querySelector('#commentArea' + this.id);
-  fetch('http://thesi.generalassemb.ly:8080/comment/' + this.id, {
+  fetch('http://localhost:8080/comment/' + this.id, {
     method : 'POST',
     headers : {"Authorization" : "Bearer "+ localStorage.getItem('user'),
       "Content-Type" : "application/json"},
@@ -314,7 +314,7 @@ function createProfile(e) {
   const addMobile = document.getElementById('addMobile');
   const addAddress = document.getElementById('addAddress');
 
-  fetch('localhost:8080/' + `${username}`, {
+  fetch('http://localhost:8080/' + `${username}`, {
     method : 'POST',
     headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
       'Content-Type' : 'application/json'},
@@ -329,7 +329,7 @@ function createProfile(e) {
 //THIS FUNCTION IS USED TO VIEW ALL THE POSTS THROUGH THE API
 function listAllPosts () {
   //e.preventDefault();
-  fetch('localhost:8080/posts/list', {
+  fetch('http://localhost:8080/posts/list', {
     method : 'GET',
     headers : {'Content-Type' : 'application/json'}
 })
@@ -344,30 +344,11 @@ function viewComments (response) {
   let commentsFor = document.getElementById('Article' + this.id);
   let postId = this.id;
 
-  fetch('localhost:8080/post/'+ `${postId}`+'/comments',
+  fetch('http://localhost:8080/post/'+ `${postId}`+'/comments',
   {method : 'GET'})
   .then((response2) => {return response2.json();})
   .then((response2) => {
 if (response.length != 0) {
-
-
-
-for (var i = 0; i < array.length; i++) {
-  array[i]
-}
-
-
-for (var i = 0; i < array.le
-ngth; i++) {
-  array[i]
-
-}
-
-while (true) {
-
-}
-
-
 
   for (var i = response2.length - 1; i >= 0; i--) {
     let comment = document.createElement('p');
@@ -377,16 +358,14 @@ while (true) {
     commentUser.innerText = response2[i].user.username;
     commentsFor.appendChild(commentUser);
     commentsFor.appendChild(comment);
-  }
-}
-})
+  }}})
 }
 
 //THIS FUNCTION IS USED TO DELETE A COMMENT
 function deleteComment (e) {
   let meth = 'DELETE';
     e.preventDefault();
-  fetch('http://thesi.generalassemb.ly:8080/comment/' + this.id + '',
+  fetch('http://localhost:8080/comment/' + `${this.id}` + '',
     {method : `${meth}`,
       headers : {'Content-Type' : 'application/json',
       'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
@@ -399,7 +378,7 @@ function deleteComment (e) {
 function deletePost (e) {
   let meth = 'DELETE';
   e.preventDefault();
-  fetch('localhost:8080/post/' + `${this.id}` + '', {
+  fetch('http://localhost:8080/post/' + `${this.id}` + '', {
     method : `${meth}`,
     headers : {'Content-Type' : 'application/json',
       'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
@@ -410,7 +389,7 @@ function deletePost (e) {
 
 //THIS FUNCTION GETS THE USER'S PROFILE THROUGH THE API
 function getProfile (e) {
-  fetch('localhost:8080/' + `${username}`, {
+  fetch('http://localhost:8080/' + `${username}`, {
     method : 'GET',
     headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
     'Content-Type' : 'application/json'}
@@ -447,7 +426,7 @@ function showProfile (response) {
 //THIS FUNCTION GETS ALL THE COMMENTS BY THE USER
 function getCommentsByUser (e) {
   //e.preventDefault();
-    fetch('http://thesi.generalassemb.ly:8080/user/comment', {
+    fetch('http://localhost:8080/'+ `${user}` + '/comment', {
       method : 'GET',
       headers : {
         'Authorization' : 'Bearer ' + localStorage.getItem('user'),
@@ -495,7 +474,7 @@ function updateProfile (e) {
    const mobile = document.getElementById('newMobile').value;
 
     e.preventDefault();
-  fetch('localhost:8080/' + `${username}`, {
+  fetch('http://localhost:8080/' + `${username}`, {
       method : 'POST',
       headers : {
         'Authorization' : 'Bearer ' + localStorage.getItem('user'),
