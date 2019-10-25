@@ -10,7 +10,7 @@ document.getElementById('logo').addEventListener('mousemove', updateDisplay);
 document.getElementById('logo').addEventListener('mouseleave', updateDisplay2);
 document.getElementById('logo').addEventListener('click', showUserFunctions);
 document.getElementById('submitMain').addEventListener('click', signUp);
-document.getElementById('viewProfile').addEventListener('click', getProfile);
+document.getElementById('viewProfilePage').addEventListener('click', getProfile);
 document.getElementById('submitPost').addEventListener('click', submitPost);
 document.getElementById('viewUserProfile').addEventListener('click', getProfile);
 document.getElementById('aboutUs').addEventListener('click', aboutUsChanges);
@@ -295,7 +295,7 @@ const description = document.querySelector('#myDescription');
 function createComment (e) {
   e.preventDefault();
   var commentArea = document.querySelector('#commentArea' + this.id);
-  fetch('http://localhost:8080/comment/' + this.id, {
+  fetch('http://localhost:8080/comment/' + `${this.id}`, {
     method : 'POST',
     headers : {"Authorization" : "Bearer "+ localStorage.getItem('user'),
       "Content-Type" : "application/json"},
@@ -364,7 +364,7 @@ if (response.length != 0) {
 //THIS FUNCTION IS USED TO DELETE A COMMENT
 function deleteComment (e) {
     e.preventDefault();
-  fetch('http://localhost:8080/comment/' + `${this.id}` + '',
+  fetch('http://localhost:8080/comment/' + this.id + '',
     {method : 'DELETE',
       headers : {'Content-Type' : 'application/json',
       'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
@@ -376,7 +376,7 @@ function deleteComment (e) {
 //THIS FUNCTION DELETES A USER'S POST
 function deletePost (e) {
   e.preventDefault();
-  fetch('http://localhost:8080/post/' + `${this.id}` + '', {
+  fetch('http://localhost:8080/post/' + this.id + '', {
     method : 'DELETE',
     headers : {'Content-Type' : 'application/json',
       'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
@@ -441,13 +441,11 @@ function displayUserComments (response) {
   const vyooUserComments = document.querySelector('#userCommentList');
   const allComments = document.createElement('article');
 
-
   for (var i = response.length-1; i >= 0; i--) {
     let article = document.createElement('article');
     let user = document.createElement('h2');
     let text = document.createElement('p');
     let button = document.createElement('button');
-
 
     //THIS CREATES THE POST/COMMENT AREA
     user.innerText = response[i].user.username;
@@ -575,7 +573,6 @@ function showPostHistory (response) {
   postList.style.overflowY = "scroll";
   allPosts.replaceWith(postList);
   postList.id = 'userPostList';
-
 }
 
 //THIS FUNCTION DISPLAYS THE ACTION SUCCESSFUL SCREEN
