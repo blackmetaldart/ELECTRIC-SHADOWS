@@ -363,10 +363,9 @@ if (response.length != 0) {
 
 //THIS FUNCTION IS USED TO DELETE A COMMENT
 function deleteComment (e) {
-  let meth = 'DELETE';
     e.preventDefault();
   fetch('http://localhost:8080/comment/' + `${this.id}` + '',
-    {method : `${meth}`,
+    {method : 'DELETE',
       headers : {'Content-Type' : 'application/json',
       'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
     .then((response) => {console.log(response);
@@ -376,10 +375,9 @@ function deleteComment (e) {
 
 //THIS FUNCTION DELETES A USER'S POST
 function deletePost (e) {
-  let meth = 'DELETE';
   e.preventDefault();
   fetch('http://localhost:8080/post/' + `${this.id}` + '', {
-    method : `${meth}`,
+    method : 'DELETE',
     headers : {'Content-Type' : 'application/json',
       'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
     .then((response) => {console.log(response);
@@ -490,7 +488,7 @@ function updateProfile (e) {
 
 //THIS FUNCTION GETS ALL THE POSTS BY A USER
 function getPostsByUser () {
-  fetch ('localhost:8080/' + `${username}` + '/post', {
+  fetch ('http://localhost:8080/' + `${username}` + '/post', {
     method : 'GET',
     headers : {
       'Authorization' : 'Bearer ' + localStorage.getItem('user'),
