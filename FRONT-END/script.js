@@ -298,7 +298,7 @@ const username = localStorage.getItem('username');
 function createComment (e) {
   e.preventDefault();
   var commentArea = document.querySelector('#commentArea' + this.id);
-  fetch('http://localhost:8080/comment/' + `${this.id}`, {
+  fetch('http://localhost:8080/' + `${this.id}`+ '/comment/', {
     method : 'POST',
     headers : {"Authorization" : "Bearer "+ localStorage.getItem('user'),
       "Content-Type" : "application/json"},
