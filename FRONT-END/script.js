@@ -257,9 +257,10 @@ function signUp (e) {
     method : 'POST',
     headers : {'Content-Type' : 'application/json'},
     body : JSON.stringify({
-      email : `${email.value}`,
+      username : `${username.value}`,
       password : `${password.value}`,
-      username : `${username.value}`})
+      email : `${email.value}`
+      })
     })
   .then((response) => {return response.json();})
   .then((response) => {localStorage.setItem('user',response.token);
