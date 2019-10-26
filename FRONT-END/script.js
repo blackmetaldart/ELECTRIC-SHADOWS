@@ -490,7 +490,7 @@ function updateProfile (e) {
 //THIS FUNCTION GETS ALL THE POSTS BY A USER
 function getPostsByUser () {
 
-  fetch ('http://localhost:8080/' + `${localStorage.getItem('username')}` + '/post', {
+  fetch ('http://localhost:8080/' + `${localStorage.getItem('username')}` + '/posts', {
     method : 'GET',
     headers : {
       'Authorization' : 'Bearer ' + localStorage.getItem('user'),
