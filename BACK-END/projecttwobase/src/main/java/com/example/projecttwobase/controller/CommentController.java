@@ -28,7 +28,7 @@ public class CommentController {
     // GET COMMENT BY USERNAME
     @GetMapping("/{username}/comments")
     public List<Comment> getCommentByUsername(@PathVariable String username) {
-        return commentService.getCommentByUsername(username);
+        return commentService.getCommentsByUsername(username);
     }
 
     //ENDPOINT THAT ALLOWS A USER TO DELETE A COMMENT / REFER TO COMMENT SERVICE

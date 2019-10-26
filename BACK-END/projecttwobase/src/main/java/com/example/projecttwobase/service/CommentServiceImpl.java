@@ -32,8 +32,9 @@ public class CommentServiceImpl implements CommentService {
         return commentRepository.findAllByPostId(postId);
     }
 
+
     //FINDS ALL THE COMMENTS USING THE USERNAME
-    public List<Comment> getCommentByUsername (String username){
+    public List<Comment> getCommentsByUsername (String username){
         return commentRepository.findAllByUsername(username);
     }
 
