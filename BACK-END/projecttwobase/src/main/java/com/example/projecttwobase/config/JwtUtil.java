@@ -21,10 +21,12 @@ public class JwtUtil implements Serializable {
     @Value("${jwt.secret}")
     private String secret;
 
+    //RETURNS THE USERNAME EXTRACTED FROM THE TOKEN
     public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
+    //RETURNS THE CLAIMS THAT ARE EXTRACTED FROM THE TOKEN
     public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = getAllClaimsFromToken(token);
         return claimsResolver.apply(claims);
@@ -47,17 +49,20 @@ public class JwtUtil implements Serializable {
         return expiration.before(new Date());
     }
 
+    //RETURNS THE EXP DATE OF TOKEN FOR VALIDATION
     public Date getExpirationDateFromToken(String token) {
 
         return getClaimFromToken(token, Claims::getExpiration);
     }
 
 
+    //THIS IS A FUNCTION THAT RETURNS THE STRINGIFIED TOKEN
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         return doGenerateToken(claims, userDetails.getUsername());
     }
 
+    //THIS IS THE PROCESS OF HOW THE TOKEN IS CREATED
     private String doGenerateToken(Map<String, Object> claims, String subject) {
         return Jwts.builder().setClaims(claims)
                 .setSubject(subject)
