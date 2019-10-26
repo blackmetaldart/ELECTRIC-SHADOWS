@@ -32,9 +32,10 @@ public class CommentServiceImpl implements CommentService {
         return commentRepository.findAllByPostId(postId);
     }
 
-//    public List<Comment> getCommentByUsername (String username){
-//        return commentRepository.findAllByUsername(username);
-//    }
+    //FINDS ALL THE COMMENTS USING THE USERNAME
+    public List<Comment> getCommentByUsername (String username){
+        return commentRepository.findAllByUsername(username);
+    }
 
     //DELETES A COMMENT FROM THE COMMENT REPOSITORY
     @Override
