@@ -427,10 +427,10 @@ function showProfile (response) {
 //THIS FUNCTION GETS ALL THE COMMENTS BY THE USER
 function getCommentsByUser (e) {
   //e.preventDefault();
-    fetch('http://localhost:8080/'+ `${localStorage.getItem('username')}` + '/comment', {
+    fetch('http://localhost:8080/'+ `${localStorage.getItem('username')}` + '/comments', {
       method : 'GET',
       headers : {
-        'Authorization' : 'Bearer ' + localStorage.getItem('username'),
+        'Authorization' : 'Bearer ' + localStorage.getItem('user'),
         'Content-Type' : 'application/json'}
     })
     .then((response) => {return response.json()})
@@ -451,7 +451,7 @@ function displayUserComments (response) {
     let button = document.createElement('button');
 
     //THIS CREATES THE POST/COMMENT AREA
-    user.innerText = response[i].user.username;
+    user.innerText = response[i].username;
     text.innerText = response[i].text;
     article.appendChild(user);
     article.appendChild(text);
