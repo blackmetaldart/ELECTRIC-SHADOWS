@@ -14,8 +14,4 @@ public class UserProfileServiceStub implements UserProfileService {
         return null;
     }
 
-    @Override
-    public UserProfile updateUserProfile(String unknown) {
-        return null;
-    }
 }
