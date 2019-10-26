@@ -317,7 +317,7 @@ function createProfile(e) {
   const addMobile = document.getElementById('addMobile');
   const addAddress = document.getElementById('addAddress');
 
-  fetch('http://localhost:8080/' + `${localStorage.getItem('username')}`, {
+  fetch('http://localhost:8080/profile/' + `${localStorage.getItem('username')}`, {
     method : 'POST',
     headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
       'Content-Type' : 'application/json'},
