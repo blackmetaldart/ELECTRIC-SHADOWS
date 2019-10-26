@@ -264,6 +264,7 @@ function signUp (e) {
     })
   .then((response) => {return response.json();})
   .then((response) => {localStorage.setItem('user',response.token);
+  localStorage.setItem('username', username.value);
   console.log(response);
   actionSuccessful();})
   }
@@ -273,6 +274,7 @@ function submitPost(e) {
 e.preventDefault();
 const title = document.querySelector('#myTitle');
 const description = document.querySelector('#myDescription');
+const username = localStorage.getItem('username');
 
   fetch('http://localhost:8080/' + `${username}` + '/makepost', {
     method : 'POST',
@@ -315,7 +317,7 @@ function createProfile(e) {
   const addMobile = document.getElementById('addMobile');
   const addAddress = document.getElementById('addAddress');
 
-  fetch('http://localhost:8080/' + `${username}`, {
+  fetch('http://localhost:8080/' + `${localStorage.getItem('username')}`, {
     method : 'POST',
     headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
       'Content-Type' : 'application/json'},
@@ -388,7 +390,7 @@ function deletePost (e) {
 
 //THIS FUNCTION GETS THE USER'S PROFILE THROUGH THE API
 function getProfile (e) {
-  fetch('http://localhost:8080/' + `${username}`, {
+  fetch('http://localhost:8080/' + `${localStorage.getItem('username')}`, {
     method : 'GET',
     headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
     'Content-Type' : 'application/json'}
@@ -425,10 +427,10 @@ function showProfile (response) {
 //THIS FUNCTION GETS ALL THE COMMENTS BY THE USER
 function getCommentsByUser (e) {
   //e.preventDefault();
-    fetch('http://localhost:8080/'+ `${user}` + '/comment', {
+    fetch('http://localhost:8080/'+ `${localStorage.getItem('username')}` + '/comment', {
       method : 'GET',
       headers : {
-        'Authorization' : 'Bearer ' + localStorage.getItem('user'),
+        'Authorization' : 'Bearer ' + localStorage.getItem('username'),
         'Content-Type' : 'application/json'}
     })
     .then((response) => {return response.json()})
@@ -471,7 +473,7 @@ function updateProfile (e) {
    const mobile = document.getElementById('newMobile').value;
 
     e.preventDefault();
-  fetch('http://localhost:8080/' + `${username}`, {
+  fetch('http://localhost:8080/' + `${localStorage.getItem('username')}`, {
       method : 'POST',
       headers : {
         'Authorization' : 'Bearer ' + localStorage.getItem('user'),
@@ -487,7 +489,8 @@ function updateProfile (e) {
 
 //THIS FUNCTION GETS ALL THE POSTS BY A USER
 function getPostsByUser () {
-  fetch ('http://localhost:8080/' + `${username}` + '/post', {
+
+  fetch ('http://localhost:8080/' + `${localStorage.getItem('username')}` + '/post', {
     method : 'GET',
     headers : {
       'Authorization' : 'Bearer ' + localStorage.getItem('user'),
