@@ -14,6 +14,4 @@ public interface CommentRepository extends CrudRepository<Comment, Long> {
     Comment getCommentById(Long CommentId);
 
     List<Comment> findAllByPostId(Long postId);
-
-    List<Comment> findAllByUsername(String Username);
 }
