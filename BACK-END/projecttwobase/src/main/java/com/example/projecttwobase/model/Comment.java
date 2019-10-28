@@ -23,9 +23,6 @@ public class Comment {
     @Column
     private String text;
 
-    @Column
-    private String username;
-
     //MAPPING TO POSTS
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "post_id", nullable = false)
@@ -51,7 +48,4 @@ public class Comment {
     public void setPost(Post post) {
         this.post = post;
     }
-
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
 }
