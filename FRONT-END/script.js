@@ -283,20 +283,20 @@ function signUp (e) {
 // THIS FUNCTION IS USED TO LOG IN
 function logIn (e) {
     e.preventDefault();
-    const username = document.querySelector('#logUsername');
-    const password = document.querySelector('#logPassword');
+    const username = document.querySelector('#logUsername').value;
+    const password = document.querySelector('#logPassword').value;
 
       fetch('http://localhost:8080/login', {
         method : 'POST',
         headers : {'Content-Type' : 'application/json'},
         body : JSON.stringify({
-          username : `${username.value}`,
-          password : `${password.value}`,
+          username : `${username}`,
+          password : `${password}`,
           })
         })
       .then((response) => {return response.json();})
       .then((response) => {localStorage.setItem('user',response.token);
-      localStorage.setItem('username', username.value);
+      localStorage.setItem('username', username);
       window.alert("Thank you for logging in!");
       getProfileChanges();})
       .catch((err) => {
@@ -432,7 +432,7 @@ function deletePost (e) {
 
 // THIS FUNCTION GETS THE USER'S PROFILE THROUGH THE API
 function getProfile (e) {
-  fetch('http://localhost:8080/profile' + `${localStorage.getItem('username')}`, {
+  fetch('http://localhost:8080/profile/' + `${localStorage.getItem('username')}`, {
     method : 'GET',
     headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
     'Content-Type' : 'application/json'}
@@ -452,7 +452,7 @@ function showProfile (response) {
   let mobile = document.createElement('p');
   let address = document.createElement('p');
 
-  user.innerText = response.user.username;
+  user.innerText = `${localStorage.getItem('username')}`;
   nextEmail.innerText = response.additionalEmail;
   mobile.innerText = response.mobile;
   address.innerText = response.address;
