@@ -357,8 +357,7 @@ function createComment (e) {
       text : `${commentArea.value}`})})
     .then((response) => {return response.json();})
     .then((response) => {console.log(response);
-
-    actionSuccessful();})
+    })
 }
 
 // THIS FUNCTION IS USED TO CREATE A PROFILE
