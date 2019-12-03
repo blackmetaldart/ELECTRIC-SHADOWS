@@ -197,14 +197,19 @@ article h2 {
   color : purple;
 }
 
-section {
+#footNav{
+
+}
+
+#footNavBar {
   position : fixed;
   bottom : 0;
   max-width : 65vw;
   width : 65vw;
   display : flex;
+
   flex-direction : row;
-  justify-content : space-evenly;
+  justify-content : space-around;
 }
 
 section nav a {
