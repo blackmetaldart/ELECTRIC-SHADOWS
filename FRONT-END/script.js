@@ -6,8 +6,6 @@ document.getElementById('createPostText').addEventListener('click', createPostCh
 document.getElementById('listAllPosts').addEventListener('click', listPostChanges);
 document.getElementById('userComments').addEventListener('click', userCommentChanges);
 document.getElementById('userPosts').addEventListener('click', userPostChanges);
-document.getElementById('logo').addEventListener('mousemove', updateDisplay);
-document.getElementById('logo').addEventListener('mouseleave', updateDisplay2);
 document.getElementById('logo').addEventListener('click', showUserFunctions);
 document.getElementById('submitMain').addEventListener('click', signUp);
 document.getElementById('viewProfilePage').addEventListener('click', getProfile);
@@ -35,15 +33,6 @@ function landingChanges (e) {
   document.getElementById('aboutElectricShadows').style.display = 'none';
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
-}
-
-//THESE TWO FUNCTIONS TOGGLE THE USER OPTIONS LOGO
-function updateDisplay (e) {
-  document.getElementById('logo').innerHTML = '<p>USER OPTIONS</p>';
-}
-
-function updateDisplay2 (e) {
-  document.getElementById('logo').innerHTML = '<i class="fas fa-bolt"></i>';
 }
 
 // THIS FUNCTION DISPLAYS THE ABOUT PAGE // HIDES ELSE
