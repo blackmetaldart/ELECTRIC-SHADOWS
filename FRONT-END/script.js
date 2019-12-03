@@ -232,6 +232,7 @@ function updateProfileChanges () {
 function logOutChanges () {
   localStorage.setItem('user', null);
   localStorage.setItem('username', null);
+  window.alert("Thank you for logging out! See you next time!")
   landingChanges();
 }
 
