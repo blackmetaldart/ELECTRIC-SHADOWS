@@ -1,6 +1,5 @@
 .headerDiv:hover #navbar{
   display : flex;
-
 }
 
 #navbar {
@@ -12,9 +11,7 @@
   margin : 0 auto;
   z-index : 1;
   transition: 2s ease-in-out;
-
 }
-
 
  .navDiv {
    text-align: center;
@@ -120,6 +117,9 @@ h1 {
 
 h2 {
   margin-bottom : 7vh;
+}
+article h2 {
+
 }
 
 #createPost form  {
@@ -231,7 +231,6 @@ section nav a {
 
 article {
   border : 1vh 1vw;
-  border : solid orange;
   padding : 2vh 5vw;
   margin-top : 2vh;
   margin-bottom : 2vh;

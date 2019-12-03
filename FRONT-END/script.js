@@ -490,9 +490,7 @@ function getPostsByUser () {
       'Authorization' : 'Bearer ' + localStorage.getItem('user'),
       'Content-Type' : 'application/json'}
     })
-    .then((response) => {
-      return response.json();
-    })
+    .then((response) => {return response.json();})
     .then((response) => {
       console.log(response);
       showPostHistory(response);
