@@ -572,7 +572,7 @@ function showAllPosts (response) {
     let button2 = document.createElement('button');
 
     //THIS CREATES THE POST/COMMENT AREA
-    heading.innerText = response[i].title;
+    heading.innerText = `${response[i].username} : ${response[i].title}` ;
     text.innerText = response[i].description;
     article.appendChild(heading);
     article.appendChild(text);
