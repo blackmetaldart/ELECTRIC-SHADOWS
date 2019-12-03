@@ -1,16 +1,10 @@
-/* .sideNav{
+#navbar {
   display : flex;
-  flex-direction : column;
-  max-height : 100vh;
-  height : 100vh;
-  max-width : 30vw;
-  width : 30vw;
-  position : fixed;
-  z-index : ;
-  top : 0;
-  left : 0;
-  justify-content : center;
-} */
+  flex-direction : row;
+  justify-content: space-around;
+  height : 8vh;
+  width : 80vw;
+}
 
 /* .navDiv {
   max-width : 30vw;
