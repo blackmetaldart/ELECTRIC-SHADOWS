@@ -8,7 +8,8 @@ document.getElementById('listAllPosts').addEventListener('click', listPostChange
 document.getElementById('userComments').addEventListener('click', userCommentChanges);
 document.getElementById('userPosts').addEventListener('click', userPostChanges);
 document.getElementById('logo').addEventListener('click', showUserFunctions);
-document.getElementById('submitMain').addEventListener('click', signUp);
+document.getElementById('submitSign').addEventListener('click', signUp);
+document.getElementById('submitLog').addEventListener('click', logIn);
 document.getElementById('viewProfilePage').addEventListener('click', getProfile);
 document.getElementById('submitPost').addEventListener('click', submitPost);
 document.getElementById('viewUserProfile').addEventListener('click', getProfile);
