@@ -264,27 +264,28 @@ function signUp (e) {
   }
 //THIS FUNCTION IS USED TO SUBMIT A POST
 function submitPost(e) {
-e.preventDefault();
-const title = document.querySelector('#myTitle');
-const description = document.querySelector('#myDescription');
-const username = localStorage.getItem('username');
+  e.preventDefault();
+  const title = document.querySelector('#myTitle');
+  const description = document.querySelector('#myDescription');
+  const username = localStorage.getItem('username');
 
-  fetch('http://localhost:8080/' + `${username}` + '/makepost', {
-    method : 'POST',
-    headers : {
-        "Authorization" : "Bearer " + localStorage.getItem('user'),
-        "Content-Type" : "application/json"
-      },
-    body : JSON.stringify({
-        title : `${title.value}`,
-        description : `${description.value}`
+    fetch('http://localhost:8080/' + `${username}` + '/makepost', {
+      method : 'POST',
+      headers : {
+          "Authorization" : "Bearer " + localStorage.getItem('user'),
+          "Content-Type" : "application/json"
+        },
+      body : JSON.stringify({
+          title : `${title.value}`,
+          description : `${description.value}`
+      })
     })
-  })
-  .then((response) => {return response.json();
-  })
-  .then((response) => {console.log(response);
-
-  actionSuccessful();})
+    .then((response) => {return response.json();})
+    .then((response) => {
+      console.log(response);
+      window.alert("Thank you for posting!");
+      userPostChanges();
+    })
 }
 
 //THIS FUNCTION IS USED TO CREATE A COMMENT
