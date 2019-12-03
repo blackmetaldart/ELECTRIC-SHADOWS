@@ -116,6 +116,7 @@ h1 {
 
 h2 {
   margin-bottom : 7vh;
+  font-family: 'Poppins', sans-serif;
 }
 article h2 {
 
@@ -203,7 +204,6 @@ article h2 {
 }
 
 #footNavBar {
-
   width : 65vw;
   display : flex;
   margin : 0 auto;
