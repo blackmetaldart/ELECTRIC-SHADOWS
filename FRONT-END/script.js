@@ -12,7 +12,7 @@ document.getElementById('submitSign').addEventListener('click', signUp);
 document.getElementById('submitLog').addEventListener('click', logIn);
 document.getElementById('viewProfilePage').addEventListener('click', getProfile);
 document.getElementById('submitPost').addEventListener('click', submitPost);
-document.getElementById('viewUserProfile').addEventListener('click', getProfile);
+document.getElementById('viewUserProfile').addEventListener('click', getProfileChanges);
 document.getElementById('aboutUs').addEventListener('click', aboutUsChanges);
 document.getElementById('submitProfile').addEventListener('click', createProfile);
 document.getElementById('createUserProfile').addEventListener('click', createProfileChanges);
@@ -25,6 +25,7 @@ function landingChanges (e) {
   document.getElementById('landingDisplay').style.display = 'block';
   document.getElementById('signUpForm').style.display = 'none';
   document.getElementById('footSignUp').style.display = 'block';
+  document.getElementById('footLogIn').style.display = 'block';
   document.getElementById('createPost').style.display = 'none';
   document.getElementById('userFunctions').style.display = 'none';
   document.getElementById('actionSuccessful').style.display = 'none';
@@ -43,6 +44,7 @@ function signUpChanges (e) {
 
   document.getElementById('signUpForm').style.display = 'block';
   document.getElementById('footSignUp').style.display = 'none';
+  document.getElementById('footLogIn').style.display = 'block';
   document.getElementById('logInForm').style.display = 'none';
   document.getElementById('createPost').style.display = 'none';
   document.getElementById('landingDisplay').style.display = 'none';
@@ -60,7 +62,8 @@ function signUpChanges (e) {
 // THIS FUNCTION DISPLAYS THE LOGIN // HIDES ELSE
 function logInChanges (e) {
   document.getElementById('signUpForm').style.display = 'none';
-  document.getElementById('footSignUp').style.display = 'none';
+  document.getElementById('footSignUp').style.display = 'block';
+  document.getElementById('footLogIn').style.display = 'none';
   document.getElementById('logInForm').style.display = 'block';
   document.getElementById('createPost').style.display = 'none';
   document.getElementById('landingDisplay').style.display = 'none';
@@ -81,6 +84,7 @@ function aboutUsChanges (e) {
   document.getElementById('signUpForm').style.display = 'none';
   document.getElementById('logInForm').style.display = 'none';
   document.getElementById('footSignUp').style.display = 'none';
+  document.getElementById('footLogIn').style.display = 'none';
   document.getElementById('createPost').style.display = 'none';
   document.getElementById('userFunctions').style.display = 'none';
   document.getElementById('actionSuccessful').style.display = 'none';
@@ -110,6 +114,7 @@ function createProfileChanges (e) {
   document.getElementById('createProfile').style.display = "block";
   document.getElementById('viewProfilePage').style.display = 'none';
   document.getElementById('footSignUp').style.display = 'none';
+  document.getElementById('footLogIn').style.display = 'none';
 }
 
 // THIS FUNCTION SHOWS THE USER FUNCTIONS // HIDES ELSE
@@ -129,6 +134,7 @@ function showUserFunctions (e) {
     document.getElementById('createProfile').style.display = "none";
     document.getElementById('viewProfilePage').style.display = 'none';
     document.getElementById('logInForm').style.display = 'none';
+    document.getElementById('footLogIn').style.display = 'none';
 }
 
 // THIS FUNCTION DISPLAYS THE CREATE POST PAGE // HIDES ELSE
@@ -147,6 +153,7 @@ function createPostChanges (e) {
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
   document.getElementById('logInForm').style.display = 'none';
+  document.getElementById('footLogIn').style.display = 'none';
 }
 
 // THIS FUNCTION DISPLAYS ALL THE POSTS THROUGH THE API // HIDES ELSE
@@ -165,6 +172,7 @@ function listPostChanges (e) {
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
   document.getElementById('logInForm').style.display = 'none';
+  document.getElementById('footLogIn').style.display = 'none';
   listAllPosts();
 }
 
@@ -184,6 +192,7 @@ function userCommentChanges (e) {
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
   document.getElementById('logInForm').style.display = 'none';
+  document.getElementById('footLogIn').style.display = 'none';
   getCommentsByUser();
 }
 
@@ -203,6 +212,7 @@ function userPostChanges (e) {
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
   document.getElementById('logInForm').style.display = 'none';
+  document.getElementById('footLogIn').style.display = 'none';
   getPostsByUser();
 }
 
@@ -211,6 +221,7 @@ function getProfileChanges (e) {
   document.getElementById('landingDisplay').style.display = 'none';
   document.getElementById('signUpForm').style.display = 'none';
   document.getElementById('footSignUp').style.display = 'none';
+  document.getElementById('footLogIn').style.display = 'none';
   document.getElementById('createPost').style.display = 'none';
   document.getElementById('userFunctions').style.display = 'none';
   document.getElementById('actionSuccessful').style.display = 'none';
@@ -222,6 +233,7 @@ function getProfileChanges (e) {
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'block';
   document.getElementById('logInForm').style.display = 'none';
+  document.getElementById('footLogIn').style.display = 'none';
   getProfile();
 }
 
@@ -242,6 +254,7 @@ function updateProfileChanges () {
   document.getElementById('viewProfilePage').style.display = 'none';
   document.getElementById('updateProfile').style.display = 'block';
   document.getElementById('logInForm').style.display = 'none';
+  document.getElementById('footLogIn').style.display = 'none';
 }
 
 // THIS IS THE FUNCTION THAT DESTROYS THE USER
@@ -464,7 +477,6 @@ function showProfile (response) {
   article.appendChild(address);
   viewProfile.appendChild(article);
 
-  getProfileChanges();
 }
 
 // THIS FUNCTION GETS ALL THE COMMENTS BY THE USER
