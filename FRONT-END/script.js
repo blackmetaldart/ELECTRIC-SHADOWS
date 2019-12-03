@@ -393,9 +393,9 @@ function listAllPosts () {
     headers : {'Content-Type' : 'application/json'}
 })
   .then((response) => {return response.json();})
-  .then((response) => {showAllPosts(response);
-   console.log(response);
-    actionSuccessful();})
+  .then((response) => {
+    showAllPosts(response);
+ })
 }
 
 // THIS FUNCTION IS USED TO VIEW THE COMMENTS
