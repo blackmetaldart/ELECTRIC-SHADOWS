@@ -239,9 +239,10 @@ function logOutChanges () {
 //THIS FUNCTION IS USED
 function signUp (e) {
   e.preventDefault();
-  const email = document.querySelector('#email');
-  const password = document.querySelector('#password');
-  const username = document.querySelector('#username');
+
+  const username = document.querySelector('#signUsername');
+  const password = document.querySelector('#signPassword');
+  const email = document.querySelector('#signEmail');
 
   fetch('http://localhost:8080/signup', {
     method : 'POST',
@@ -263,23 +264,29 @@ function signUp (e) {
   })
   }
 
-  fetch('http://localhost:8080/login', {
-    method : 'POST',
-    headers : {'Content-Type' : 'application/json'},
-    body : JSON.stringify({
-      username : `${username.value}`,
-      password : `${password.value}`,
+  function logIn (e) {
+    e.preventDefault();
+    const username = document.querySelector('#logUsername');
+    const password = document.querySelector('#logPassword');
+
+
+      fetch('http://localhost:8080/login', {
+        method : 'POST',
+        headers : {'Content-Type' : 'application/json'},
+        body : JSON.stringify({
+          username : `${username.value}`,
+          password : `${password.value}`,
+          })
+        })
+      .then((response) => {return response.json();})
+      .then((response) => {localStorage.setItem('user',response.token);
+      localStorage.setItem('username', username.value);
+      window.alert("Thank you for logging in!");
+      getProfileChanges();})
+      .catch((err) => {
+        console.log(err);
+        window.alert(err);
       })
-    })
-  .then((response) => {return response.json();})
-  .then((response) => {localStorage.setItem('user',response.token);
-  localStorage.setItem('username', username.value);
-  window.alert("Thank you for logging in!");
-  getProfileChanges();})
-  .catch((err) => {
-    console.log(err);
-    window.alert(err);
-  })
   }
 //THIS FUNCTION IS USED TO SUBMIT A POST
 function submitPost(e) {
