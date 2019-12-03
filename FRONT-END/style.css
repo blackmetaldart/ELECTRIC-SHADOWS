@@ -115,11 +115,10 @@ h1 {
 }
 
 h2 {
-  margin-bottom : 7vh;
-  font-family: 'Poppins', sans-serif;
+  margin-bottom : 7vh;  
 }
 article h2 {
-
+  font-family: 'Poppins', sans-serif;
 }
 
 #createPost form  {
