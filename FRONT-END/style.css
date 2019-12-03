@@ -179,7 +179,6 @@ article h2 {
 }
 
 .commentArea {
-  max-height : 3vh;
   height : 3vh;
 }
 
@@ -198,16 +197,16 @@ article h2 {
 }
 
 #footNav{
-
+ width : 100vw;
+ position : fixed;
+ bottom : 0;
 }
 
 #footNavBar {
-  position : fixed;
-  bottom : 0;
-  max-width : 65vw;
+
   width : 65vw;
   display : flex;
-
+  margin : 0 auto;
   flex-direction : row;
   justify-content : space-around;
 }
