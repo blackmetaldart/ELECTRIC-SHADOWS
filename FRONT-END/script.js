@@ -1,5 +1,5 @@
 
-//THESE FUNCTIONS ARE RERESPONSIBLE FOR ACTIVATING A LOADED PAGE
+// THESE FUNCTIONS ARE RERESPONSIBLE FOR ACTIVATING A LOADED PAGE
 document.getElementById('landingLogo').addEventListener('click', landingChanges);
 document.getElementById('footSignUp').addEventListener('click', signUpChanges);
 document.getElementById('createPostText').addEventListener('click', createPostChanges);
@@ -18,7 +18,7 @@ document.getElementById('upProfile').addEventListener('click', updateProfileChan
 document.getElementById('submitChanges').addEventListener('click', updateProfile);
 document.getElementById('logOut').addEventListener('click', logOutChanges);
 
-//THESE FUNCTIONS ARE RESPONSIBLE FOR SWITCHING THE SCREENS
+// THESE FUNCTIONS ARE RESPONSIBLE FOR SWITCHING THE SCREENS
 function landingChanges (e) {
   document.getElementById('landingDisplay').style.display = 'block';
   document.getElementById('signUpForm').style.display = 'none';
@@ -52,7 +52,7 @@ function aboutUsChanges (e) {
   document.getElementById('viewProfilePage').style.display = 'none';
 }
 
-//THIS FUNCTION DISPLAUS THE CREATE PROFILE PAGE // HIDES ELSE
+// THIS FUNCTION DISPLAUS THE CREATE PROFILE PAGE // HIDES ELSE
 function createProfileChanges (e) {
   document.getElementById('landingDisplay').style.display = 'none';
   document.getElementById('signUpForm').style.display = 'none';
@@ -70,7 +70,7 @@ function createProfileChanges (e) {
   document.getElementById('footSignUp').style.display = 'none';
 }
 
-//THIS FUNCTION SHOWS THE USER FUNCTIONS // HIDES ELSE
+// THIS FUNCTION SHOWS THE USER FUNCTIONS // HIDES ELSE
 function showUserFunctions (e) {
     document.getElementById('signUpForm').style.display = 'none';
     document.getElementById('updateProfile').style.display = 'none';
@@ -88,7 +88,7 @@ function showUserFunctions (e) {
     document.getElementById('viewProfilePage').style.display = 'none';
 }
 
-//THIS FUNCTION DISPLAYS THE SIGNUP // HIDES ELSE
+// THIS FUNCTION DISPLAYS THE SIGNUP // HIDES ELSE
 function logInChanges (e) {
   document.getElementById('signUpForm').style.display = 'block';
   document.getElementById('updateProfile').style.display = 'none';
@@ -104,7 +104,7 @@ function logInChanges (e) {
   document.getElementById('viewProfilePage').style.display = 'none';
 }
 
-//THIS FUNCTION DISPLAYS THE SIGNUP // HIDES ELSE
+// THIS FUNCTION DISPLAYS THE SIGNUP // HIDES ELSE
 function signUpChanges (e) {
 
   document.getElementById('signUpForm').style.display = 'block';
@@ -122,7 +122,7 @@ function signUpChanges (e) {
   document.getElementById('viewProfilePage').style.display = 'none';
 }
 
-//THIS FUNCTION DISPLAYS THE CREATE POST PAGE // HIDES ELSE
+// THIS FUNCTION DISPLAYS THE CREATE POST PAGE // HIDES ELSE
 function createPostChanges (e) {
   document.getElementById('createPost').style.display = 'block';
   document.getElementById('signUpForm').style.display = 'none';
@@ -139,7 +139,7 @@ function createPostChanges (e) {
   document.getElementById('viewProfilePage').style.display = 'none';
 }
 
-//THIS FUNCTION DISPLAYS ALL THE POSTS THROUGH THE API // HIDES ELSE
+// THIS FUNCTION DISPLAYS ALL THE POSTS THROUGH THE API // HIDES ELSE
 function listPostChanges (e) {
   document.getElementById('createPost').style.display = 'none';
   document.getElementById('signUpForm').style.display = 'none';
@@ -157,7 +157,7 @@ function listPostChanges (e) {
   listAllPosts();
 }
 
-//THIS FUNCTION DISPLAYS THE USER'S COMMENTS // HIDES ELSE
+// THIS FUNCTION DISPLAYS THE USER'S COMMENTS // HIDES ELSE
 function userCommentChanges (e) {
   document.getElementById('createPost').style.display = 'none';
   document.getElementById('signUpForm').style.display = 'none';
@@ -175,7 +175,7 @@ function userCommentChanges (e) {
   getCommentsByUser();
 }
 
-//THIS FUNCTION DISPLAYS THE USER'S POSTS // HIDES ELSE
+// THIS FUNCTION DISPLAYS THE USER'S POSTS // HIDES ELSE
 function userPostChanges (e) {
   document.getElementById('signUpForm').style.display = 'none';
   document.getElementById('createPost').style.display = 'none';
@@ -193,7 +193,7 @@ function userPostChanges (e) {
   getPostsByUser();
 }
 
-//THIS FUNCTION DISPLAYS THE USERS PROFILE // HIDES ELSE
+// THIS FUNCTION DISPLAYS THE USERS PROFILE // HIDES ELSE
 function getProfileChanges (e) {
   document.getElementById('landingDisplay').style.display = 'none';
   document.getElementById('signUpForm').style.display = 'none';
@@ -210,7 +210,7 @@ function getProfileChanges (e) {
   document.getElementById('viewProfilePage').style.display = 'block';
 }
 
-//THIS FUNCTION DISPLAYS THE UPDATE PROFILE PAGE // HIDES ELSE
+// THIS FUNCTION DISPLAYS THE UPDATE PROFILE PAGE // HIDES ELSE
 function updateProfileChanges () {
   document.getElementById('landingDisplay').style.display = 'none';
   document.getElementById('signUpForm').style.display = 'none';
@@ -228,15 +228,15 @@ function updateProfileChanges () {
   document.getElementById('updateProfile').style.display = 'block';
 }
 
-//THIS IS THE FUNCTION THAT DESTROYS THE USER
+// THIS IS THE FUNCTION THAT DESTROYS THE USER
 function logOutChanges () {
   localStorage.setItem('user', null);
   localStorage.setItem('username', null);
   landingChanges();
 }
 
-//THESE ARE THE FUNCTIONS THAT ARE RESPONSIBLE FOR MANIPULATING THE DOM
-//THIS FUNCTION IS USED
+// THESE ARE THE FUNCTIONS THAT ARE RESPONSIBLE FOR MANIPULATING THE DOM
+// THIS FUNCTION IS USED TO SIGN UP
 function signUp (e) {
   e.preventDefault();
 
@@ -264,11 +264,11 @@ function signUp (e) {
   })
   }
 
-  function logIn (e) {
+// THIS FUNCTION IS USED TO LOG IN
+function logIn (e) {
     e.preventDefault();
     const username = document.querySelector('#logUsername');
     const password = document.querySelector('#logPassword');
-
 
       fetch('http://localhost:8080/login', {
         method : 'POST',
@@ -288,7 +288,8 @@ function signUp (e) {
         window.alert(err);
       })
   }
-//THIS FUNCTION IS USED TO SUBMIT A POST
+
+// THIS FUNCTION IS USED TO SUBMIT A POST
 function submitPost(e) {
   e.preventDefault();
   const title = document.querySelector('#myTitle');
@@ -314,7 +315,7 @@ function submitPost(e) {
     })
 }
 
-//THIS FUNCTION IS USED TO CREATE A COMMENT
+// THIS FUNCTION IS USED TO CREATE A COMMENT
 function createComment (e) {
   e.preventDefault();
   var commentArea = document.querySelector('#commentArea' + this.id);
@@ -330,7 +331,7 @@ function createComment (e) {
     actionSuccessful();})
 }
 
-//THIS FUNCTION IS USED TO CREATE A PROFILE
+// THIS FUNCTION IS USED TO CREATE A PROFILE
 function createProfile(e) {
   e.preventDefault();
   const addEmail = document.getElementById('addEmail');
@@ -349,7 +350,7 @@ function createProfile(e) {
    actionSuccessful();})
  }
 
-//THIS FUNCTION IS USED TO VIEW ALL THE POSTS THROUGH THE API
+// THIS FUNCTION IS USED TO VIEW ALL THE POSTS THROUGH THE API
 function listAllPosts () {
   //e.preventDefault();
   fetch('http://localhost:8080/posts/list', {
@@ -362,7 +363,7 @@ function listAllPosts () {
     actionSuccessful();})
 }
 
-//THIS FUNCTION IS USED TO VIEW THE COMMENTS
+// THIS FUNCTION IS USED TO VIEW THE COMMENTS
 function viewComments (response) {
   let commentsFor = document.getElementById('Article' + this.id);
   let postId = this.id;
@@ -384,7 +385,7 @@ if (response.length != 0) {
   }}})
 }
 
-//THIS FUNCTION IS USED TO DELETE A COMMENT
+// THIS FUNCTION IS USED TO DELETE A COMMENT
 function deleteComment (e) {
     e.preventDefault();
   fetch('http://localhost:8080/comment/' + this.id + '',
@@ -396,7 +397,7 @@ function deleteComment (e) {
     actionSuccessful();})
 }
 
-//THIS FUNCTION DELETES A USER'S POST
+// THIS FUNCTION DELETES A USER'S POST
 function deletePost (e) {
   e.preventDefault();
   fetch('http://localhost:8080/post/' + this.id + '', {
@@ -408,7 +409,7 @@ function deletePost (e) {
         actionSuccessful();})
 }
 
-//THIS FUNCTION GETS THE USER'S PROFILE THROUGH THE API
+// THIS FUNCTION GETS THE USER'S PROFILE THROUGH THE API
 function getProfile (e) {
   fetch('http://localhost:8080/' + `${localStorage.getItem('username')}`, {
     method : 'GET',
@@ -420,7 +421,7 @@ function getProfile (e) {
   showProfile(response);})
 }
 
-//THIS FUNCTION DISPLAYS THE USER'S PROFILE
+// THIS FUNCTION DISPLAYS THE USER'S PROFILE
 function showProfile (response) {
   const viewProfile = document.getElementById('viewProfilePage');
 
@@ -444,7 +445,7 @@ function showProfile (response) {
   getProfileChanges();
 }
 
-//THIS FUNCTION GETS ALL THE COMMENTS BY THE USER
+// THIS FUNCTION GETS ALL THE COMMENTS BY THE USER
 function getCommentsByUser (e) {
   //e.preventDefault();
     fetch('http://localhost:8080/'+ `${localStorage.getItem('username')}` + '/comments', {
@@ -459,7 +460,7 @@ function getCommentsByUser (e) {
     displayUserComments(response);})
 }
 
-//THIS FUNCTION DISPLAYS THE COMMENTS BY THE USER
+// THIS FUNCTION DISPLAYS THE COMMENTS BY THE USER
 function displayUserComments (response) {
   const vyooUserComments = document.querySelector('#userCommentList');
   const allComments = document.createElement('article');
@@ -488,7 +489,7 @@ function displayUserComments (response) {
     allComments.id = 'userCommentList'
 }
 
-//THIS FUNCTION UPDATES THE PROFILE
+// THIS FUNCTION UPDATES THE PROFILE
 function updateProfile (e) {
    const mobile = document.getElementById('newMobile').value;
 
@@ -507,7 +508,7 @@ function updateProfile (e) {
     })
 }
 
-//THIS FUNCTION GETS ALL THE POSTS BY A USER
+// THIS FUNCTION GETS ALL THE POSTS BY A USER
 function getPostsByUser () {
 
   fetch ('http://localhost:8080/' + `${localStorage.getItem('username')}` + '/posts', {
@@ -523,7 +524,7 @@ function getPostsByUser () {
     })
   }
 
-//THIS FUNCTION SHOWS ALL THE POSTS
+// THIS FUNCTION SHOWS ALL THE POSTS
 function showAllPosts (response) {
   const allPosts = document.querySelector('#viewAllPosts');
   const idbase = 'commentArea';
@@ -558,7 +559,7 @@ function showAllPosts (response) {
 }
 }
 
-//THIS FUNCTION SHOWS ALL OF THE POSTS THROUGH THE API
+// THIS FUNCTION SHOWS ALL OF THE POSTS THROUGH THE API
 function showPostHistory (response) {
   const allPosts = document.querySelector('#userPostList');
   const postList = document.createElement('article');
@@ -597,7 +598,7 @@ function showPostHistory (response) {
   postList.id = 'userPostList';
 }
 
-//THIS FUNCTION DISPLAYS THE ACTION SUCCESSFUL SCREEN
+// THIS FUNCTION DISPLAYS THE ACTION SUCCESSFUL SCREEN
 function actionSuccessful () {
   document.getElementById('signUpForm').style.display = 'none';
   document.getElementById('updateProfile').style.display = 'none';
@@ -609,7 +610,7 @@ function actionSuccessful () {
   document.getElementById('actionError').style.display = 'none';
 }
 
-//THIS SCREEN DISPLAYS THE ACTION ERROR SCREEN
+// THIS SCREEN DISPLAYS THE ACTION ERROR SCREEN
 function actionError () {
   document.getElementById('signUpForm').style.display = 'none';
   document.getElementById('updateProfile').style.display = 'none';
