@@ -2,6 +2,7 @@
 // THESE FUNCTIONS ARE RERESPONSIBLE FOR ACTIVATING A LOADED PAGE
 document.getElementById('landingLogo').addEventListener('click', landingChanges);
 document.getElementById('footSignUp').addEventListener('click', signUpChanges);
+document.getElementById('footLogIn').addEventListener('click', logInChanges);
 document.getElementById('createPostText').addEventListener('click', createPostChanges);
 document.getElementById('listAllPosts').addEventListener('click', listPostChanges);
 document.getElementById('userComments').addEventListener('click', userCommentChanges);
@@ -33,12 +34,51 @@ function landingChanges (e) {
   document.getElementById('aboutElectricShadows').style.display = 'none';
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
+  document.getElementById('logInForm').style.display = 'none';
+}
+
+// THIS FUNCTION DISPLAYS THE SIGNUP // HIDES ELSE
+function signUpChanges (e) {
+
+  document.getElementById('signUpForm').style.display = 'block';
+  document.getElementById('footSignUp').style.display = 'none';
+  document.getElementById('logInForm').style.display = 'none';
+  document.getElementById('createPost').style.display = 'none';
+  document.getElementById('landingDisplay').style.display = 'none';
+  document.getElementById('userFunctions').style.display = 'none';
+  document.getElementById('actionSuccessful').style.display = 'none';
+  document.getElementById('actionError').style.display = 'none';
+  document.getElementById('viewUserPosts').style.display = 'none';
+  document.getElementById('viewAllPosts').style.display = 'none';
+  document.getElementById('viewUserComments').style.display = 'none';
+  document.getElementById('aboutElectricShadows').style.display = 'none';
+  document.getElementById('createProfile').style.display = "none";
+  document.getElementById('viewProfilePage').style.display = 'none';
+}
+
+// THIS FUNCTION DISPLAYS THE LOGIN // HIDES ELSE
+function logInChanges (e) {
+  document.getElementById('signUpForm').style.display = 'none';
+  document.getElementById('footSignUp').style.display = 'none';
+  document.getElementById('logInForm').style.display = 'block';
+  document.getElementById('createPost').style.display = 'none';
+  document.getElementById('landingDisplay').style.display = 'none';
+  document.getElementById('userFunctions').style.display = 'none';
+  document.getElementById('actionSuccessful').style.display = 'none';
+  document.getElementById('actionError').style.display = 'none';
+  document.getElementById('viewUserPosts').style.display = 'none';
+  document.getElementById('viewAllPosts').style.display = 'none';
+  document.getElementById('viewUserComments').style.display = 'none';
+  document.getElementById('aboutElectricShadows').style.display = 'none';
+  document.getElementById('createProfile').style.display = "none";
+  document.getElementById('viewProfilePage').style.display = 'none';
 }
 
 // THIS FUNCTION DISPLAYS THE ABOUT PAGE // HIDES ELSE
 function aboutUsChanges (e) {
   document.getElementById('landingDisplay').style.display = 'none';
   document.getElementById('signUpForm').style.display = 'none';
+  document.getElementById('logInForm').style.display = 'none';
   document.getElementById('footSignUp').style.display = 'none';
   document.getElementById('createPost').style.display = 'none';
   document.getElementById('userFunctions').style.display = 'none';
@@ -56,6 +96,7 @@ function aboutUsChanges (e) {
 function createProfileChanges (e) {
   document.getElementById('landingDisplay').style.display = 'none';
   document.getElementById('signUpForm').style.display = 'none';
+  document.getElementById('logInForm').style.display = 'none';
   document.getElementById('footSignUp').style.display = 'block';
   document.getElementById('createPost').style.display = 'none';
   document.getElementById('userFunctions').style.display = 'none';
@@ -86,40 +127,7 @@ function showUserFunctions (e) {
     document.getElementById('aboutElectricShadows').style.display = 'none';
     document.getElementById('createProfile').style.display = "none";
     document.getElementById('viewProfilePage').style.display = 'none';
-}
-
-// THIS FUNCTION DISPLAYS THE SIGNUP // HIDES ELSE
-function logInChanges (e) {
-  document.getElementById('signUpForm').style.display = 'block';
-  document.getElementById('updateProfile').style.display = 'none';
-  document.getElementById('landingDisplay').style.display = 'none';
-  document.getElementById('userFunctions').style.display = 'none';
-  document.getElementById('actionSuccessful').style.display = 'none';
-  document.getElementById('actionError').style.display = 'none';
-  document.getElementById('viewUserPosts').style.display = 'none';
-  document.getElementById('viewAllPosts').style.display = 'none';
-  document.getElementById('viewUserComments').style.display = 'none';
-  document.getElementById('aboutElectricShadows').style.display = 'none';
-  document.getElementById('createProfile').style.display = "none";
-  document.getElementById('viewProfilePage').style.display = 'none';
-}
-
-// THIS FUNCTION DISPLAYS THE SIGNUP // HIDES ELSE
-function signUpChanges (e) {
-
-  document.getElementById('signUpForm').style.display = 'block';
-  document.getElementById('footSignUp').style.display = 'none';
-  document.getElementById('createPost').style.display = 'none';
-  document.getElementById('landingDisplay').style.display = 'none';
-  document.getElementById('userFunctions').style.display = 'none';
-  document.getElementById('actionSuccessful').style.display = 'none';
-  document.getElementById('actionError').style.display = 'none';
-  document.getElementById('viewUserPosts').style.display = 'none';
-  document.getElementById('viewAllPosts').style.display = 'none';
-  document.getElementById('viewUserComments').style.display = 'none';
-  document.getElementById('aboutElectricShadows').style.display = 'none';
-  document.getElementById('createProfile').style.display = "none";
-  document.getElementById('viewProfilePage').style.display = 'none';
+    document.getElementById('logInForm').style.display = 'none';
 }
 
 // THIS FUNCTION DISPLAYS THE CREATE POST PAGE // HIDES ELSE
@@ -137,6 +145,7 @@ function createPostChanges (e) {
   document.getElementById('aboutElectricShadows').style.display = 'none';
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
+  document.getElementById('logInForm').style.display = 'none';
 }
 
 // THIS FUNCTION DISPLAYS ALL THE POSTS THROUGH THE API // HIDES ELSE
@@ -154,6 +163,7 @@ function listPostChanges (e) {
   document.getElementById('aboutElectricShadows').style.display = 'none';
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
+  document.getElementById('logInForm').style.display = 'none';
   listAllPosts();
 }
 
@@ -172,6 +182,7 @@ function userCommentChanges (e) {
   document.getElementById('aboutElectricShadows').style.display = 'none';
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
+  document.getElementById('logInForm').style.display = 'none';
   getCommentsByUser();
 }
 
@@ -190,6 +201,7 @@ function userPostChanges (e) {
   document.getElementById('aboutElectricShadows').style.display = 'none';
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
+  document.getElementById('logInForm').style.display = 'none';
   getPostsByUser();
 }
 
@@ -208,6 +220,7 @@ function getProfileChanges (e) {
   document.getElementById('aboutElectricShadows').style.display = 'none';
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'block';
+  document.getElementById('logInForm').style.display = 'none';
 }
 
 // THIS FUNCTION DISPLAYS THE UPDATE PROFILE PAGE // HIDES ELSE
@@ -226,6 +239,7 @@ function updateProfileChanges () {
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'none';
   document.getElementById('updateProfile').style.display = 'block';
+  document.getElementById('logInForm').style.display = 'none';
 }
 
 // THIS IS THE FUNCTION THAT DESTROYS THE USER
