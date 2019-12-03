@@ -438,9 +438,7 @@ function deletePost (e) {
     method : 'DELETE',
     headers : {'Content-Type' : 'application/json',
       'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
-    .then((response) => {console.log(response);
-
-        actionSuccessful();})
+    .then((response) => {console.log(response);})
 }
 
 // THIS FUNCTION GETS THE USER'S PROFILE THROUGH THE API
