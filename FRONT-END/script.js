@@ -254,13 +254,13 @@ function signUp (e) {
   .then((response) => {return response.json();})
   .then((response) => {localStorage.setItem('user',response.token);
   localStorage.setItem('username', username.value);
-  window.alert("Thank you for signing up!");})
+  window.alert("Thank you for signing up!");
+  createProfileChanges();})
   .catch((err) => {
     console.log(err);
     window.alert(err);
   })
   }
-
 //THIS FUNCTION IS USED TO SUBMIT A POST
 function submitPost(e) {
 e.preventDefault();
