@@ -360,10 +360,15 @@ function createProfile(e) {
       'Content-Type' : 'application/json'},
     body : JSON.stringify({additionalEmail : addEmail.value,
      mobile : addMobile.value, address : addAddress.value})})
-   .then((response => {return response.json()}))
-   .then((response) => {console.log(response);
-
-   actionSuccessful();})
+   .then((response) => {return response.json();})
+   .then((response) => {
+     console.log(response);
+     window.alert("Thank you for creating a profile!")
+   })
+   .catch((err) => {
+     console.log(err);
+     window.alert(err);
+   })
  }
 
 // THIS FUNCTION IS USED TO VIEW ALL THE POSTS THROUGH THE API
@@ -427,7 +432,7 @@ function deletePost (e) {
 
 // THIS FUNCTION GETS THE USER'S PROFILE THROUGH THE API
 function getProfile (e) {
-  fetch('http://localhost:8080/' + `${localStorage.getItem('username')}`, {
+  fetch('http://localhost:8080/profile' + `${localStorage.getItem('username')}`, {
     method : 'GET',
     headers : {'Authorization' : 'Bearer ' + localStorage.getItem('user'),
     'Content-Type' : 'application/json'}
