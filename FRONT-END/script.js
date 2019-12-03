@@ -105,7 +105,7 @@ function logInChanges (e) {
 
 //THIS FUNCTION DISPLAYS THE SIGNUP // HIDES ELSE
 function signUpChanges (e) {
-  //e.preventDefault();
+
   document.getElementById('signUpForm').style.display = 'block';
   document.getElementById('footSignUp').style.display = 'none';
   document.getElementById('createPost').style.display = 'none';
@@ -254,8 +254,11 @@ function signUp (e) {
   .then((response) => {return response.json();})
   .then((response) => {localStorage.setItem('user',response.token);
   localStorage.setItem('username', username.value);
-  console.log(response);
-  actionSuccessful();})
+  window.alert("Thank you for signing up!");})
+  .catch((err) => {
+    console.log(err);
+    window.alert(err);
+  })
   }
 
 //THIS FUNCTION IS USED TO SUBMIT A POST

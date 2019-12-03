@@ -1,3 +1,8 @@
+.headerDiv:hover #navbar{
+  display : flex;
+
+}
+
 #navbar {
   display : none;
   flex-direction : row;
@@ -6,13 +11,11 @@
   width : 80vw;
   margin : 0 auto;
   z-index : 1;
-  transition: 1.5s;
-}
-
-.headerDiv:hover #navbar{
-  display : flex;
+  transition: 2s ease-in-out;
 
 }
+
+
  .navDiv {
    text-align: center;
 }
