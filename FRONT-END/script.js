@@ -427,8 +427,8 @@ function deleteComment (e) {
       headers : {'Content-Type' : 'application/json',
       'Authorization' : 'Bearer ' + localStorage.getItem('user')}})
     .then((response) => {console.log(response);
-
-    actionSuccessful();})
+      userCommentChanges();
+    })
 }
 
 // THIS FUNCTION DELETES A USER'S POST
