@@ -67,6 +67,7 @@ function createProfileChanges (e) {
   document.getElementById('aboutElectricShadows').style.display = 'none';
   document.getElementById('createProfile').style.display = "block";
   document.getElementById('viewProfilePage').style.display = 'none';
+  document.getElementById('footSignUp').style.display = 'none';
 }
 
 //THIS FUNCTION SHOWS THE USER FUNCTIONS // HIDES ELSE
