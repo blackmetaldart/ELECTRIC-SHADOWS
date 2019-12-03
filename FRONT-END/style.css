@@ -25,10 +25,6 @@ body {
   padding : 0;
 }
 
-#logo {
-  font-size: 7vh;
-}
-
 .mainContent {
   width : 100vw;
   height : 100vh;
