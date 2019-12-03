@@ -222,6 +222,7 @@ function getProfileChanges (e) {
   document.getElementById('createProfile').style.display = "none";
   document.getElementById('viewProfilePage').style.display = 'block';
   document.getElementById('logInForm').style.display = 'none';
+  getProfile();
 }
 
 // THIS FUNCTION DISPLAYS THE UPDATE PROFILE PAGE // HIDES ELSE
