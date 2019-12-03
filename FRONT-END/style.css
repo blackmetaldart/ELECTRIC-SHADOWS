@@ -9,8 +9,8 @@
   height : 8vh;
   width : 80vw;
   margin : 0 auto;
-  z-index : 1;
   transition: 2s ease-in-out;
+
 }
 
  .navDiv {
@@ -19,6 +19,8 @@
 
 .navDiv a {
   text-decoration: none;
+  color : white;
+  z-index : 10;
 }
 
 body {
@@ -70,9 +72,7 @@ h1 {
 }
 
 .infoDisplay {
-  max-width : 63vw;
-  width : 63vw;
-  max-height : 75vh;
+  width : 100vw;
   height : 75vh;
   background-color: blue;
   margin : 0 auto;
@@ -85,9 +85,7 @@ h1 {
 
 .infoDiv {
   display : none;
-  max-width : 63vw;
-  width : 63vw;
-  max-height : 75vh;
+  width : 100vw;
   height : 75vh;
   margin : 0 auto;
   flex-direction : column;
@@ -102,8 +100,9 @@ h1 {
   box-sizing : border-box;
   background-size : cover;
   background-position : center;
-  opacity : .9;
+  opacity : .8;
   display : block;
+  z-index : 5;
 }
 
 #signUpForm {
@@ -115,7 +114,7 @@ h1 {
 }
 
 h2 {
-  margin-bottom : 7vh;  
+  margin-bottom : 7vh;
 }
 article h2 {
   font-family: 'Poppins', sans-serif;

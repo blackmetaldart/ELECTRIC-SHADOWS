@@ -467,9 +467,9 @@ function showProfile (response) {
   let address = document.createElement('p');
 
   user.innerText = `${localStorage.getItem('username')}`;
-  nextEmail.innerText = response.additionalEmail;
-  mobile.innerText = response.mobile;
-  address.innerText = response.address;
+  nextEmail.innerText = `Email : ${response.additionalEmail}`;
+  mobile.innerText = `Mobile : ${response.mobile}`;
+  address.innerText = `Address : ${response.address}`;
 
   article.appendChild(user);
   article.appendChild(nextEmail);
